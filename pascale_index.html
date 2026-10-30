@@ -535,7 +535,9 @@ var ACTIVITES = [
 // Coaching individuel : {id, nom, desc, prix, duree, jours[]}
 var COACHING = [
   {id:101, nom:'Coaching personnalisé', desc:'Séance sur-mesure adaptée à vos objectifs (remise en forme, préparation physique, bien-être).', prix:60, duree:60,
-    jours:['Lundi','Mardi','Mercredi','Jeudi','Vendredi']}
+    jours:['Lundi','Mardi','Mercredi','Jeudi','Vendredi']},
+  {id:102, nom:'Carte 10 séances', desc:'10 cours collectifs au choix (Pilates, Cross Training…) à utiliser à votre rythme. Économisez 30 € par rapport au tarif à la séance.', prix:120, duree:null,
+    jours:[]}
 ];
 
 // Réservations : {id, type:'cours'|'coaching', activiteId, jour, heure, nom, tel, chambre, date}
@@ -749,13 +751,24 @@ function renderCoaching(){
   }
   for(var i=0;i<COACHING.length;i++){
     var c=COACHING[i];
-    h+='<div class="coach-card">';
-    h+='<div class="act-top"><div class="act-name">'+c.nom+'</div><div class="act-price">'+c.prix+' €<span class="act-price-sub">extérieurs<br>🏨 Gratuit hôtel</span></div></div>';
-    h+='<div class="act-desc">'+c.desc+'</div>';
-    h+='<div class="act-meta"><span class="act-tag">⏱ '+c.duree+' min</span><span class="act-tag">📅 '+c.jours.join(', ')+'</span></div>';
-    h+='<div style="font-size:12px;color:var(--terracotta);font-weight:700;margin-top:8px;">📞 Sur réservation · '+c.prix+'€/heure · Appelez Pascale</div>';
-    h+='<a href="tel:0672174995" class="btnp" style="display:block;text-align:center;text-decoration:none;margin-top:6px;">📞 06 72 17 49 95</a>';
-    h+='</div>';
+    if(c.id===102){
+      // Carte 10 séances — présentation spéciale avec bouton commander
+      h+='<div class="coach-card" style="border:2px solid var(--terracotta);">';
+      h+='<div style="display:inline-block;background:var(--terracotta);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:8px;">🔥 Meilleure offre</div>';
+      h+='<div class="act-top"><div class="act-name">🎫 '+c.nom+'</div><div class="act-price">'+c.prix+' €<span class="act-price-sub">soit 12€/séance</span></div></div>';
+      h+='<div class="act-desc">'+c.desc+'</div>';
+      h+='<div class="act-meta"><span class="act-tag">💳 Règlement sur place</span><span class="act-tag">✅ Valable 1 an</span></div>';
+      h+='<a href="tel:0672174995" class="btnp" style="display:block;text-align:center;text-decoration:none;margin-top:10px;">📞 Acheter ma carte · 06 72 17 49 95</a>';
+      h+='</div>';
+    } else {
+      h+='<div class="coach-card">';
+      h+='<div class="act-top"><div class="act-name">'+c.nom+'</div><div class="act-price">'+c.prix+' €<span class="act-price-sub">extérieurs<br>🏨 Gratuit hôtel</span></div></div>';
+      h+='<div class="act-desc">'+c.desc+'</div>';
+      h+='<div class="act-meta"><span class="act-tag">⏱ '+c.duree+' min</span><span class="act-tag">📅 '+c.jours.join(', ')+'</span></div>';
+      h+='<div style="font-size:12px;color:var(--terracotta);font-weight:700;margin-top:8px;">📞 Sur réservation · '+c.prix+'€/heure · Appelez Pascale</div>';
+      h+='<a href="tel:0672174995" class="btnp" style="display:block;text-align:center;text-decoration:none;margin-top:6px;">📞 06 72 17 49 95</a>';
+      h+='</div>';
+    }
   }
   el('coaching-list').innerHTML=h;
 }
