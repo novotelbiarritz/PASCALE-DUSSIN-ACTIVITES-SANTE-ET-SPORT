@@ -255,11 +255,11 @@ body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--cre
         🤸 <strong>Pilates</strong> tous les <strong style="color:#4ADE80;">mercredis à 18h</strong> &nbsp;·&nbsp; 🏋️ <strong>Cross Training</strong> tous les <strong style="color:#60A5FA;">samedis à 9h30</strong>
       </div>
 
-      <div class="hero-creds">🎓 Coach diplômée d'État · Pilates · Cross Training · Coaching</div>
+      <div class="hero-creds">🎓 Coach diplômée d'État · Sport · Pilates · Coaching</div>
       <div class="hero-pills">
         <div class="pill">🤸 Pilates · Mercredi 18h</div>
         <div class="pill">🏋️ Cross Training · Samedi 9h30</div>
-        <div class="pill">🏨 Gratuit clients hôtel · 15 € extérieurs</div>
+        <div class="pill">🎟️ 15 € · Tout public</div>
       </div>
     </div>
 
@@ -347,7 +347,7 @@ body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--cre
       </div>
       <div class="info-row">
         <div class="info-ic">🎓</div>
-        <div><div class="info-txt-t">Diplômes</div><div class="info-txt-d">Coach diplômée d'État · Spécialiste Pilates & Cross Training</div></div>
+        <div><div class="info-txt-t">Diplômes</div><div class="info-txt-d">Coach diplômée d'État · Sport · Pilates · Coaching</div></div>
       </div>
       <div class="info-row">
         <div class="info-ic">💳</div>
@@ -509,7 +509,7 @@ var ACTIVITES = [
 var COACHING = [
   {id:101, nom:'Coaching personnalisé', desc:'Séance sur-mesure adaptée à vos objectifs (remise en forme, préparation physique, bien-être).', prix:60, duree:60,
     jours:['Lundi','Mardi','Mercredi','Jeudi','Vendredi']},
-  {id:102, nom:'Carte 10 séances', desc:'10 cours collectifs au choix (Pilates, Cross Training…) à utiliser à votre rythme. Économisez 30 € par rapport au tarif à la séance.', prix:120, duree:null,
+  {id:102, nom:'Carte 10 séances', desc:'10 cours collectifs au choix (Pilates, Cross Training…) à utiliser à votre rythme. Économisez 10 € par rapport au tarif à la séance.', prix:140, duree:null,
     jours:[]}
 ];
 
@@ -778,7 +778,7 @@ function updateClientTypeUI(){
   if(!selActivite||selType!=='cours')return;
   el('ctype-hotel').classList.toggle('on', selClientType==='hotel');
   el('ctype-ext').classList.toggle('on', selClientType==='exterieur');
-  var prixAffiche = selClientType==='hotel' ? 'Gratuit' : selActivite.prix+' €';
+  var prixAffiche = selActivite.prix+' €';
   el('rcard-detail').textContent=selCreneau.jour+' à '+selCreneau.heure+' · '+selActivite.duree+' min · '+prixAffiche;
 }
 
@@ -809,9 +809,7 @@ function submitReservation(){
   if(!fp||!fn||!tel){alert('Merci de renseigner prénom, nom et téléphone.');return;}
   // Cours collectifs gratuits pour les clients hôtel, payants pour les extérieurs.
   // Le coaching individuel reste payant pour tout le monde (selClientType non applicable).
-  var prixPaye = selType==='cours'
-    ? (selType==='cours'&&selClientType==='hotel' ? 0 : selActivite.prix)
-    : selActivite.prix;
+  var prixPaye = selActivite.prix;
   var resa={
     site:'pascale',
     type:selType,
@@ -833,7 +831,7 @@ function submitReservation(){
     var ref='PD-'+actAbbrev(selActivite.nom)+'-'+ddmm+'-'+docRef.id.slice(-3).toUpperCase();
     return docRef.update({ref:ref}).then(function(){return ref;});
   }).then(function(ref){
-    var prixTxt = prixPaye===0 ? 'Gratuit (client hôtel)' : prixPaye+' €';
+    var prixTxt = prixPaye+' €';
     var detail = selType==='cours'
       ? selActivite.nom+' — '+selCreneau.jour+' à '+selCreneau.heure+' · '+prixTxt
       : selActivite.nom+' — Pascale vous recontacte au '+tel+' pour fixer le créneau';
@@ -892,7 +890,7 @@ function renderAdmin(){
   }
   RESAS.slice().reverse().forEach(function(r){
     var act = r.type==='cours' ? ACTIVITES.find(function(a){return a.id===r.activiteId;}) : COACHING.find(function(c){return c.id===r.activiteId;});
-    var prixTxt = r.prixPaye===0 ? '<span style="color:#7C8B6F;font-weight:700">Gratuit (hôtel)</span>' : r.prixPaye+' €';
+    var prixTxt = r.prixPaye+' €';
     hr+='<div class="adm-card"><strong>'+r.nom+'</strong> · '+(act?act.nom:'?')+' · '+prixTxt+'<br/>';
     hr+='<span style="font-size:11px;color:#888">'+(r.jour?r.jour+' '+r.heure:'Coaching — à planifier')+' · 📞 '+r.tel+(r.chambre?' · Ch.'+r.chambre:'')+(r.clientType?' · '+(r.clientType==='hotel'?'🏨 Hôtel':'🚶 Extérieur'):'')+'</span></div>';
   });
@@ -973,7 +971,7 @@ function exportSite(){
 // ===================== BON CADEAU =====================
 var BON_CADEAUX_PRODUITS = [
   {id:'bc1', icon:'💪', nom:'Séance coaching individuel', desc:'1h de coaching sur-mesure avec Pascale, adapté à vos objectifs.', prix:60, tag:'1 séance'},
-  {id:'bc2', icon:'🎫', nom:'Carte 10 cours collectifs', desc:'10 cours au choix parmi Pilates, Cross Training et autres activités.', prix:120, tag:'10 séances'},
+  {id:'bc2', icon:'🎫', nom:'Carte 10 cours collectifs', desc:'10 cours au choix parmi Pilates, Cross Training et autres activités.', prix:140, tag:'10 séances'},
   {id:'bc3', icon:'🤸', nom:'Séance découverte Pilates', desc:'1h pour découvrir le Pilates avec Pascale dans un cadre privilégié.', prix:15, tag:'Découverte'},
   {id:'bc4', icon:'🏋️', nom:'Séance découverte Cross Training', desc:'1h pour découvrir le Cross Training encadré par Pascale.', prix:15, tag:'Découverte'},
   {id:'bc5', icon:'🌟', nom:'Pack Bien-être 5 séances', desc:'5 séances au choix (Pilates, Cross Training ou coaching) à utiliser à votre rythme.', prix:65, tag:'5 séances'}
