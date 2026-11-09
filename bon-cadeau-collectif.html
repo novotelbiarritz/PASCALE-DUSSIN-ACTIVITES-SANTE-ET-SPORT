@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bon Cadeau Cours Collectifs – Pascale Dussin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap">
+<style>
+  :root{--gold:#C9A84C;--gold2:#F0D080;--primary:#7A2800;--primary2:#A83C14;--accent:#C0552A;--white:#FAFAF5;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#1a1a1a;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px 40px;font-family:'Lato',sans-serif;}
+
+  .actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s;}
+  .btn-send{background:var(--accent);color:#fff;}
+  .btn-dl{background:var(--gold);color:#1a1a1a;}
+  .btn:hover{opacity:.85;}
+  .notice{color:#aaa;font-size:12px;text-align:center;margin-bottom:16px;max-width:600px;}
+
+  .card{width:100%;max-width:800px;background:var(--primary);border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.7);position:relative;}
+
+  .card-header{background:var(--primary);padding:22px 28px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+  .logo-block{text-align:center;flex:1;}
+  .logo-name{font-family:'Cinzel',serif;color:#fff;font-size:clamp(18px,3.5vw,28px);letter-spacing:.08em;line-height:1;}
+  .logo-name span{color:var(--gold);}
+  .logo-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.22em;text-transform:uppercase;margin-top:4px;}
+  .logo-hotel{color:#ddd;font-size:clamp(7px,1.2vw,10px);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
+  .num-block{background:rgba(255,255,255,.12);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;white-space:nowrap;font-size:clamp(9px,1.5vw,12px);color:var(--gold2);font-family:'Cinzel',serif;letter-spacing:.05em;}
+
+  .sep{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px 28px 0;}
+
+  .card-title-block{text-align:center;padding:16px 28px 4px;}
+  .card-title{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:.06em;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.4);}
+  .card-subtitle{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.22em;text-transform:uppercase;margin-top:6px;font-weight:300;}
+
+  .leaf{text-align:center;font-size:18px;color:var(--gold);margin:8px 0;}
+
+  /* Zone image (dégradé sport) + champs */
+  .card-body{display:flex;gap:0;min-height:220px;}
+  .card-img{width:38%;background:linear-gradient(160deg,#5A1A00 0%,#8B2E0A 40%,#C06030 100%);position:relative;overflow:hidden;flex-shrink:0;}
+  .card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.9;}
+  .card-img-icon{font-size:64px;opacity:.35;}
+  .card-img-txt{position:absolute;bottom:14px;width:100%;text-align:center;color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;opacity:.85;}
+  .card-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--primary));pointer-events:none;}
+  .card-fields{flex:1;padding:18px 24px 18px 20px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+  .field-row{display:flex;flex-direction:column;gap:2px;}
+  .field-label{color:var(--gold);font-size:clamp(9px,1.5vw,11px);letter-spacing:.2em;text-transform:uppercase;font-weight:700;}
+  .field-value{color:#fff;font-size:clamp(12px,2vw,15px);border-bottom:1px dotted rgba(201,168,76,.4);padding-bottom:4px;min-height:22px;font-weight:300;letter-spacing:.03em;}
+  .field-value.empty{color:rgba(255,255,255,.3);font-style:italic;}
+
+  /* Packages */
+  .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 24px 0;}
+  .pkg{background:rgba(0,0,0,.3);border:1.5px solid rgba(201,168,76,.4);border-radius:8px;text-align:center;padding:10px 6px;position:relative;}
+  .pkg.active{border-color:var(--gold);background:rgba(201,168,76,.12);}
+  .pkg-name{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(10px,1.8vw,13px);font-weight:700;letter-spacing:.08em;}
+  .pkg-detail{color:#ccc;font-size:clamp(9px,1.5vw,11px);margin-top:3px;line-height:1.4;}
+  .pkg-price{color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(16px,2.8vw,22px);font-weight:700;margin-top:6px;}
+  .pkg-eco{color:#8BC34A;font-size:clamp(7px,1.2vw,10px);font-weight:700;letter-spacing:.05em;}
+  .pkg-check{position:absolute;top:-8px;right:-8px;background:var(--gold);color:#1a1a1a;border-radius:50%;width:18px;height:18px;font-size:11px;display:none;align-items:center;justify-content:center;font-weight:700;}
+  .pkg.active .pkg-check{display:flex;}
+
+  .panachable{text-align:center;padding:8px 24px 0;color:var(--gold2);font-size:clamp(9px,1.5vw,11px);font-style:italic;letter-spacing:.05em;}
+
+  .validity-band{background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1));margin:14px 24px 0;border-radius:40px;text-align:center;padding:10px 20px;border:1.5px solid var(--gold);}
+  .validity-main{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(16px,3vw,24px);font-weight:700;letter-spacing:.12em;}
+  .validity-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
+
+  .sep2{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px 28px;}
+
+  .card-footer{background:rgba(0,0,0,.35);display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;align-items:center;padding:14px 24px;gap:0;}
+  .foot-col{text-align:center;padding:0 12px;}
+  .foot-div{width:1px;background:rgba(201,168,76,.4);height:60px;align-self:center;}
+  .foot-icon{font-size:18px;margin-bottom:4px;}
+  .foot-title{color:var(--gold);font-size:clamp(7px,1.3vw,10px);letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
+  .foot-name{font-family:'Lato',sans-serif;color:#fff;font-size:clamp(14px,2.5vw,20px);font-style:italic;font-weight:300;}
+  .foot-phone{color:var(--gold2);font-size:clamp(10px,1.8vw,15px);font-weight:700;letter-spacing:.04em;}
+  .foot-addr{color:#ccc;font-size:clamp(7px,1.2vw,11px);line-height:1.5;}
+  .foot-addr strong{color:#fff;}
+  .foot-right{color:#ccc;font-size:clamp(7px,1.2vw,10px);line-height:1.6;}
+
+  .card-bottom-bar{background:linear-gradient(90deg,var(--primary2),#6B2000,var(--primary2));padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;}
+  .bar-text{color:var(--gold2);font-size:clamp(7px,1.3vw,11px);letter-spacing:.15em;text-transform:uppercase;}
+  .bar-sep{color:var(--gold);font-size:14px;}
+
+  @media print{
+    body{background:#fff;padding:0;display:block;}
+    .actions,.notice{display:none!important;}
+    .card{max-width:100%;border-radius:0;box-shadow:none;page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="actions">
+  <button class="btn btn-send" onclick="sendToClient()">📧 Envoyer au client</button>
+  <button class="btn btn-dl" onclick="window.print()">⬇️ Télécharger / Imprimer PDF</button>
+</div>
+<p class="notice">Une fois le paiement encaissé, cliquez sur <strong>« Envoyer au client »</strong> pour lui adresser son bon cadeau.</p>
+
+<div class="card" id="card">
+
+  <div class="card-header">
+    <div style="width:60px;flex-shrink:0;"></div>
+    <div class="logo-block">
+      <div class="logo-name">Pascale <span>Dussin</span></div>
+      <div class="logo-sub">Activités Santé &amp; Sport</div>
+      <div class="logo-hotel">Novotel Biarritz Anglet</div>
+    </div>
+    <div class="num-block">Bon cadeau N°&nbsp;<span id="numVal">—</span></div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="card-title-block">
+    <div class="card-title">BON CADEAU</div>
+    <div class="card-subtitle">Cours Collectifs · Pilates &amp; Cross Training</div>
+  </div>
+  <div class="leaf">🏅</div>
+
+  <div class="card-body">
+    <div class="card-img">
+      <img src="pascale-photo.jpg" alt="Pascale Dussin" onerror="this.style.display='none'">
+      <div class="card-img-txt">Pilates · Cross Training</div>
+      <div class="card-img-overlay"></div>
+    </div>
+    <div class="card-fields">
+      <div class="field-row">
+        <span class="field-label">Pour</span>
+        <span class="field-value" id="fPour">&nbsp;</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">De la part de</span>
+        <span class="field-value" id="fDe">&nbsp;</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Formule</span>
+        <span class="field-value" id="fSoin">&nbsp;</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Séances</span>
+        <span class="field-value" id="fDuree">&nbsp;</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Message</span>
+        <span class="field-value" id="fMsg">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages -->
+  <div class="packages">
+    <div class="pkg" id="pkg-boost">
+      <div class="pkg-check">✓</div>
+      <div class="pkg-name">LE BOOST</div>
+      <div class="pkg-detail">5 séances</div>
+      <div class="pkg-price">70 €</div>
+    </div>
+    <div class="pkg" id="pkg-challenge">
+      <div class="pkg-check">✓</div>
+      <div class="pkg-name">LE CHALLENGE</div>
+      <div class="pkg-detail">10 séances</div>
+      <div class="pkg-price">140 €</div>
+    </div>
+    <div class="pkg" id="pkg-power">
+      <div class="pkg-check">✓</div>
+      <div class="pkg-name">LE POWER</div>
+      <div class="pkg-detail">15 séances</div>
+      <div class="pkg-price">210 €</div>
+    </div>
+  </div>
+  <div class="panachable">✦ Cours librement panachables entre Pilates et Cross Training ✦</div>
+
+  <div class="validity-band">
+    <div class="validity-main">VALABLE 6 MOIS</div>
+    <div class="validity-sub">Non remboursable – Non échangeable</div>
+  </div>
+
+  <div class="sep2"></div>
+
+  <div class="card-footer">
+    <div class="foot-col">
+      <div class="foot-icon">📍</div>
+      <div class="foot-addr"><strong>Novotel<br>Biarritz Anglet</strong><br>68 avenue d'Espagne<br>64600 Anglet</div>
+    </div>
+    <div class="foot-div"></div>
+    <div class="foot-col">
+      <div class="foot-icon">🏃</div>
+      <div class="foot-title">Contact coach</div>
+      <div class="foot-name">Pascale</div>
+      <div class="foot-phone">06 72 17 49 95</div>
+    </div>
+    <div class="foot-div"></div>
+    <div class="foot-col">
+      <div class="foot-icon">📅</div>
+      <div class="foot-title">Réservez vos séances</div>
+      <div class="foot-right">Auprès de votre coach<br>ou sur l'appli<br><strong style="color:var(--gold2)">Pascale Dussin<br>Novotel Biarritz Anglet</strong></div>
+    </div>
+  </div>
+
+  <div class="card-bottom-bar">
+    <span class="bar-text">🏅</span>
+    <span class="bar-text">Pascale Dussin · Novotel Biarritz Anglet</span>
+    <span class="bar-sep">|</span>
+    <span class="bar-text">Pilates · Cross Training · Bien-être</span>
+    <span class="bar-text">🏅</span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  function g(k){ return decodeURIComponent(p.get(k)||''); }
+
+  var num    = g('num')  || ('PD-COL-'+new Date().getFullYear()+'-'+String(Date.now()).slice(-6));
+  var pour   = g('dest') || g('pour') || '';
+  var de     = g('de')   || (g('prenom')+' '+g('nom')).trim() || '';
+  var pkg    = (g('pkg')||g('formule')||'').toLowerCase();
+  var msg    = g('msg')  || '';
+  var email  = g('email')|| '';
+
+  var packages = {
+    'boost':     {name:'LE BOOST',     seances:'5 séances',  prix:'70 €'},
+    'challenge': {name:'LE CHALLENGE', seances:'10 séances', prix:'140 €'},
+    'power':     {name:'LE POWER',     seances:'15 séances', prix:'210 €'}
+  };
+  var activePkg = packages[pkg] || null;
+
+  document.getElementById('numVal').textContent = num;
+  set('fPour',  pour || '…');
+  set('fDe',    de   || '…');
+  set('fSoin',  activePkg ? activePkg.name+' — '+activePkg.prix : (g('soin')||'…'));
+  set('fDuree', activePkg ? activePkg.seances+' Pilates & Cross Training' : (g('duree')||'…'));
+  set('fMsg',   msg  || '…');
+
+  if(pkg && packages[pkg]){
+    var el = document.getElementById('pkg-'+pkg);
+    if(el) el.classList.add('active');
+  }
+
+  function set(id, val){
+    var el = document.getElementById(id);
+    el.textContent = val;
+    if(val==='…') el.classList.add('empty');
+  }
+
+  window.sendToClient = function(){
+    var pkgObj = activePkg || {name: g('soin')||'—', seances: g('duree')||'—', prix: g('prix')||'—'};
+    if(!email){ alert('Adresse email du client non disponible dans ce lien.'); return; }
+    var pageUrl = window.location.href;
+    var subj = encodeURIComponent('🎁 Votre Bon Cadeau Cours Collectifs – N°'+num);
+    var body = encodeURIComponent(
+      'Bonjour '+(pour||de)+',\n\n'+
+      'Suite à votre achat de bon cadeau Cours Collectifs Pilates & Cross Training,\n'+
+      'je vous confirme que votre paiement a bien été enregistré.\n\n'+
+      '━━━━━━━━━━━━━━━━━━━━━━━\n'+
+      '🎁 BON CADEAU N° '+num+'\n'+
+      '━━━━━━━━━━━━━━━━━━━━━━━\n'+
+      'Formule    : '+pkgObj.name+'\n'+
+      'Séances    : '+pkgObj.seances+'\n'+
+      'Montant    : '+pkgObj.prix+'\n'+
+      (pour ? 'Pour       : '+pour+'\n' : '')+
+      (msg && msg!=='…' ? 'Message    : '+msg+'\n' : '')+
+      '━━━━━━━━━━━━━━━━━━━━━━━\n'+
+      'Les séances sont librement panachables entre Pilates et Cross Training.\n'+
+      'Ce bon cadeau est valable 6 mois à compter de ce jour.\n\n'+
+      '► Visualisez et imprimez votre bon cadeau ici :\n'+pageUrl+'\n\n'+
+      'Pour réserver vos séances :\n'+
+      '📞 Pascale : 06 72 17 49 95\n'+
+      '📍 Novotel Biarritz Anglet, 68 avenue d\'Espagne, 64600 Anglet\n\n'+
+      'À très bientôt sur les tapis !\nPascale Dussin\nCoach Sport & Bien-être · Novotel Biarritz Anglet'
+    );
+    window.open('mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+body);
+  };
+})();
+</script>
+</body>
+</html>
