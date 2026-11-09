@@ -37,8 +37,8 @@
   .leaf{text-align:center;font-size:18px;color:var(--gold);margin:8px 0;}
 
   .card-body{display:flex;gap:0;min-height:220px;}
-  .card-img{width:38%;background:linear-gradient(160deg,#4A1200 0%,#7A2800 40%,#B05020 100%);position:relative;overflow:hidden;flex-shrink:0;}
-  .card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.9;}
+  .card-img{width:42%;background:linear-gradient(160deg,#4A1200 0%,#7A2800 40%,#B05020 100%);position:relative;overflow:hidden;flex-shrink:0;}
+  .card-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:1;image-rendering:auto;}
   .card-img-icon{font-size:64px;opacity:.35;}
   .card-img-txt{position:absolute;bottom:14px;width:100%;text-align:center;color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;opacity:.85;}
   .card-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--primary));pointer-events:none;}
@@ -237,6 +237,20 @@
   if(pkg && packages[pkg]){
     var el = document.getElementById('pkg-'+pkg);
     if(el) el.classList.add('active');
+    // Masquer les formules non achetées
+    ['declic','boost','equilibre'].forEach(function(k){
+      if(k!==pkg){
+        var other = document.getElementById('pkg-'+k);
+        if(other) other.style.display='none';
+      }
+    });
+    // Adapter la grille à 1 colonne
+    var pkgGrid = document.querySelector('.packages');
+    if(pkgGrid){
+      pkgGrid.style.gridTemplateColumns='1fr';
+      pkgGrid.style.maxWidth='340px';
+      pkgGrid.style.margin='12px auto 0';
+    }
   }
 
   function set(id, val){
@@ -266,7 +280,7 @@
       '━━━━━━━━━━━━━━━━━━━━━━━\n'+
       'Les séances sont à composer librement : Sport, Yoga ou Pilates.\n'+
       'Ce bon cadeau est valable 6 mois à compter de ce jour.\n\n'+
-      '┺ Visualisez et imprimez votre bon cadeau ici :\n'+pageUrl+'\n\n'+
+      '► Visualisez et imprimez votre bon cadeau ici :\n'+pageUrl+'\n\n'+
       'Pour réserver vos séances :\n'+
       '📞 Pascale : 06 72 17 49 95\n'+
       '📍 Novotel Biarritz Anglet, 68 avenue d\'Espagne, 64600 Anglet\n\n'+
