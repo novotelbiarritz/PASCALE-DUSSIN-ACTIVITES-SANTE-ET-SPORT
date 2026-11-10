@@ -448,7 +448,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     var body = encodeURIComponent(lines.join('\n'));
 
     /* Open mailto to Pascale, cc to client */
-    window.open('mailto:pascale.fitnesscoach@free.fr?cc='+encodeURIComponent(emailTo)+'&subject='+subj+'&body='+body);
+    window.location.href = 'mailto:pascale.fitnesscoach@free.fr?cc='+encodeURIComponent(emailTo)+'&subject='+subj+'&body='+body);
 
     document.getElementById('notif').classList.add('show');
     document.getElementById('btnSend').disabled = true;
