@@ -237,21 +237,7 @@
   if(pkg && packages[pkg]){
     var el = document.getElementById('pkg-'+pkg);
     if(el) el.classList.add('active');
-    // Masquer les formules non achetées
-    ['declic','boost','equilibre'].forEach(function(k){
-      if(k!==pkg){
-        var other = document.getElementById('pkg-'+k);
-        if(other) other.style.display='none';
-      }
-    });
-    // Adapter la grille à 1 colonne
-    var pkgGrid = document.querySelector('.packages');
-    if(pkgGrid){
-      pkgGrid.style.gridTemplateColumns='1fr';
-      pkgGrid.style.maxWidth='340px';
-      pkgGrid.style.margin='12px auto 0';
-    }
-  }
+    
 
   function set(id, val){
     var el = document.getElementById(id);
@@ -286,7 +272,7 @@
       '📍 Novotel Biarritz Anglet, 68 avenue d\'Espagne, 64600 Anglet\n\n'+
       'À très bientôt !\nPascale Dussin\nCoach Sport & Bien-être · Novotel Biarritz Anglet'
     );
-    window.open('mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+body);
+    window.location.href = 'mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+body;
   };
 })();
 </script>
