@@ -180,7 +180,10 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 
   <!-- PANIER -->
   <div class="cart-section" id="cartSection">
-    <div class="section-label" style="justify-content:space-between;align-items:center;">③ Votre panier<button id="btnClear" onclick="clearCart()" style="display:none;font-size:11px;background:transparent;border:1px solid rgba(255,80,80,.5);color:rgba(255,100,100,.8);border-radius:5px;padding:4px 10px;cursor:pointer;font-family:inherit;letter-spacing:.04em;">🗑 Vider</button></div>
+    <div class="section-label" style="justify-content:space-between;align-items:center;">
+      ③ Votre panier
+      <button id="btnClear" onclick="clearCart()" style="display:none;font-size:11px;background:transparent;border:1px solid rgba(255,80,80,.5);color:rgba(255,100,100,.8);border-radius:5px;padding:4px 10px;cursor:pointer;font-family:inherit;letter-spacing:.04em;">🗑 Vider</button>
+    </div>
     <div id="cartEmpty" class="cart-empty">Votre panier est vide.<br>Choisissez une formule et ajoutez-la ci-dessus.</div>
     <div class="cart-items" id="cartItems" style="display:none;"></div>
     <div class="total-bar" id="totalBar" style="display:none;">
@@ -198,8 +201,8 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       ✉️ Envoyer ma commande à Pascale
     </button>
     <p class="send-hint">
-      Un email récapitulatif s'ouvrira dans votre messagerie.<br>
-      Pascale vous contactera pour le paiement et vous enverra votre bon cadeau.
+      Votre commande sera envoyée directement à Pascale.<br>
+      Elle vous contactera pour le paiement et vous enverra votre bon cadeau.
     </p>
     <div class="notif" id="notif">
       ✅ <strong>Commande envoyée !</strong><br>
@@ -338,6 +341,9 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     renderFormulas();
   };
 
+  /* ── Clear cart ── */
+  window.clearCart = function(){ cart=[]; renderCart(); };
+
   /* ── Remove from cart ── */
   window.removeFromCart = function(i){
     cart.splice(i,1);
@@ -350,18 +356,21 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     var items = document.getElementById('cartItems');
     var bar   = document.getElementById('totalBar');
     var btn   = document.getElementById('btnSend');
+    var btnClear = document.getElementById('btnClear');
 
     if(cart.length===0){
       empty.style.display = '';
       items.style.display = 'none';
       bar.style.display   = 'none';
       btn.disabled        = true;
+      btnClear.style.display = 'none';
       return;
     }
     empty.style.display = 'none';
     items.style.display = '';
     bar.style.display   = '';
     btn.disabled        = false;
+    btnClear.style.display = '';
 
     items.innerHTML = '';
     var total = 0;
@@ -409,7 +418,8 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 
     var total = cart.reduce(function(s,i){ return s+i.prixNum*i.qty; },0);
     var totalQty = cart.reduce(function(s,i){ return s+i.qty; },0);
-    var dateStr = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});    var base = 'https://novotelbiarritz.github.io/PASCALE-DUSSIN-ACTIVITES-SANTE-ET-SPORT/';
+    var dateStr = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+    var base = 'https://novotelbiarritz.github.io/PASCALE-DUSSIN-ACTIVITES-SANTE-ET-SPORT/';
 
     var subj = encodeURIComponent('🎁 Commande de Bon(s) Cadeau Pascale Dussin – ' + dateStr);
 
@@ -425,6 +435,10 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     ];
 
     cart.forEach(function(item, i){
+      var vp = item.type==='coaching' ? 'bon-cadeau-coaching.html' : 'bon-cadeau-collectif.html';
+      var vNum = (item.type==='coaching' ? 'PD-PRV' : 'PD-COL')+'-'+new Date().getFullYear()+'-'+String(Date.now()).slice(-4)+'-'+(i+1);
+      var vUrl = base+vp+'?num='+encodeURIComponent(vNum)+'&dest='+encodeURIComponent(item.pour)+'&de='+encodeURIComponent(item.de)+'&pkg='+encodeURIComponent(item.pkg)+'&email='+encodeURIComponent(item.email)+(item.msg?'&msg='+encodeURIComponent(item.msg):'');
+
       lines.push('BON CADEAU #'+(i+1)+' — '+item.typeLabel);
       lines.push('  Formule   : '+item.pkgName+' ('+item.prixStr+')');
       lines.push('  Détail    : '+item.detail);
@@ -433,6 +447,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       lines.push('  De la part: '+item.de);
       lines.push('  Email     : '+item.email);
       if(item.msg) lines.push('  Message   : "'+item.msg+'"');
+      lines.push('  ► BON CADEAU : '+vUrl);
       lines.push('');
     });
 
@@ -445,14 +460,41 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     lines.push('Cordialement,');
     lines.push(cart[0].de);
 
-    var body = encodeURIComponent(lines.join('\n'));
+    var emailBody = lines.join('\n');
 
-    /* Open mailto to Pascale, cc to client */
-    window.location.href = 'mailto:pascale.fitnesscoach@free.fr?cc='+encodeURIComponent(emailTo)+'&subject='+subj+'&body='+body;
+    /* ── Envoi réel via FormSubmit.co ── */
+    var btnSend = document.getElementById('btnSend');
+    btnSend.disabled = true;
+    btnSend.textContent = '⏳ Envoi en cours…';
 
-    document.getElementById('notif').classList.add('show');
-    document.getElementById('btnSend').disabled = true;
-    document.getElementById('btnSend').textContent = '✅ Commande envoyée';
+    var formData = new FormData();
+    formData.append('_subject', '🎁 Commande de Bon(s) Cadeau Pascale Dussin – ' + new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'}));
+    formData.append('_replyto', emailTo);
+    formData.append('_cc', emailTo);
+    formData.append('_template', 'table');
+    formData.append('message', emailBody);
+
+    fetch('https://formsubmit.co/ajax/pascale.fitnesscoach@free.fr', {
+      method: 'POST',
+      headers: {'Accept': 'application/json'},
+      body: formData
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.success){
+        document.getElementById('notif').classList.add('show');
+        btnSend.textContent = '✅ Commande envoyée';
+      } else {
+        btnSend.disabled = false;
+        btnSend.textContent = '📧 Envoyer la commande';
+        alert('Erreur lors de l\'envoi : ' + (data.message || 'Veuillez réessayer.'));
+      }
+    })
+    .catch(function(){
+      btnSend.disabled = false;
+      btnSend.textContent = '📧 Envoyer la commande';
+      alert('Erreur réseau. Vérifiez votre connexion et réessayez.');
+    });
   };
 
   /* ── Init ── */
