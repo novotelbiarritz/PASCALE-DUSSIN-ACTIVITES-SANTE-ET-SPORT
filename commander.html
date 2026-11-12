@@ -474,7 +474,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       formData.append(prefix + 'Email', item.email);
       formData.append(prefix + 'Portable client', item.tel);
       if(item.msg) formData.append(prefix + 'Message', '"' + item.msg + '"');
-      formData.append(prefix + '→ Lien à envoyer au client après paiement', vUrl)
+      formData.append(prefix + '→ Lien à envoyer au client après paiement', vUrl);
             var confirmUrl = base + 'confirmer-bon.html?to=' + encodeURIComponent(item.email)
               + '&pour=' + encodeURIComponent(item.pour)
               + '&de='   + encodeURIComponent(item.de)
@@ -483,7 +483,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
               + '&pkg='  + encodeURIComponent(item.pkgName)
               + '&mt='   + encodeURIComponent(item.prixNum * item.qty)
               + '&num='  + encodeURIComponent(vNum);
-            formData.append(prefix + '✉️ CLIQUER ICI après paiement pour envoyer le bon', confirmUrl);;
+            formData.append(prefix + '✉️ CLIQUER ICI après paiement pour envoyer le bon', confirmUrl);
     });
 
     formData.append('TOTAL', total + ' € (' + totalQty + ' bon' + (totalQty > 1 ? 's' : '') + ')');
