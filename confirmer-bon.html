@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Envoyer le bon cadeau — Pascale Dussin</title>
+<style>
+  :root{
+    --gold:#c9a84c;--gold2:#e8c97a;--dark:#0d0d0d;--card:#1a1a2e;
+    --text:#f0f0f0;--sub:#aaa;--green:#2ecc71;--radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--dark);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-start;padding:32px 16px;}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:6px;text-align:center;}
+  .subtitle{color:var(--sub);font-size:.85rem;margin-bottom:32px;text-align:center;}
+  .card{background:var(--card);border:1px solid #333;border-radius:var(--radius);
+    padding:28px 24px;width:100%;max-width:520px;margin-bottom:20px;}
+  .card-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);
+    margin-bottom:16px;}
+  .row{display:flex;justify-content:space-between;padding:8px 0;
+    border-bottom:1px solid #2a2a3a;font-size:.9rem;}
+  .row:last-child{border-bottom:none;}
+  .row .label{color:var(--sub);}
+  .row .val{color:var(--text);font-weight:600;text-align:right;max-width:60%;word-break:break-all;}
+  .voucher-link{
+    display:block;background:#111;border:1px solid #333;border-radius:8px;
+    padding:10px 14px;font-size:.75rem;color:var(--gold2);word-break:break-all;
+    margin-top:12px;text-decoration:none;}
+  .voucher-link:hover{background:#1a1a2e;}
+
+  .btn-send{
+    display:block;width:100%;max-width:520px;
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    color:#111;font-weight:700;font-size:1rem;
+    padding:16px;border-radius:var(--radius);border:none;
+    cursor:pointer;text-align:center;text-decoration:none;
+    letter-spacing:.04em;margin-bottom:12px;}
+  .btn-send:hover{opacity:.9;}
+  .btn-preview{
+    display:block;width:100%;max-width:520px;
+    background:transparent;border:1px solid #444;
+    color:var(--sub);font-size:.88rem;
+    padding:12px;border-radius:var(--radius);
+    cursor:pointer;text-align:center;text-decoration:none;}
+  .btn-preview:hover{border-color:var(--gold);color:var(--gold);}
+
+  .notice{max-width:520px;text-align:center;font-size:.78rem;color:#666;margin-top:16px;line-height:1.5;}
+  .error{background:#2a0a0a;border:1px solid #600;border-radius:var(--radius);
+    padding:20px;max-width:520px;text-align:center;color:#f88;}
+</style>
+</head>
+<body>
+
+<div class="logo">🌿 Pascale Dussin — Admin</div>
+<div class="subtitle">Envoi du bon cadeau après encaissement</div>
+
+<div id="app"></div>
+
+<script>
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var to   = p.get('to')   || '';
+  var pour = p.get('pour') || '';
+  var de   = p.get('de')   || '';
+  var tel  = p.get('tel')  || '';
+  var url  = p.get('url')  || '';
+  var pkg  = p.get('pkg')  || '';
+  var mt   = p.get('mt')   || '';
+  var num  = p.get('num')  || '';
+  var app  = document.getElementById('app');
+
+  if(!to || !url){
+    app.innerHTML = '<div class="error">⚠️ Lien invalide ou incomplet.<br>Utilisez le lien reçu dans l\'email de commande.</div>';
+    return;
+  }
+
+  /* ── Mailto body ── */
+  var body = 'Bonjour ' + pour + ','
+    + '\n\nSuite à votre règlement, je vous adresse votre bon cadeau personnel.'
+    + '\n\nVoici votre lien :\n' + url
+    + '\n\nPour planifier votre séance, appelez-moi au 06 72 17 49 95.'
+    + '\n\nCordialement,'
+    + '\nPascale Dussin'
+    + '\nCoach Activités Santé & Sport'
+    + '\nNovotel Anglet-Biarritz';
+
+  var subject = 'Votre bon cadeau — Pascale Dussin Activités Santé & Sport';
+  var mailto  = 'mailto:' + to
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body='    + encodeURIComponent(body);
+
+  /* ── Render ── */
+  var rows = [
+    ['Destinataire (bénéficiaire)', pour],
+    ['Offert par', de],
+    ['Email client', to],
+    tel ? ['Tél. client', tel] : null,
+    pkg ? ['Formule', pkg] : null,
+    mt  ? ['Montant', mt + ' €'] : null,
+    num ? ['N° bon', num] : null
+  ].filter(Boolean);
+
+  var rowsHtml = rows.map(function(r){
+    return '<div class="row"><span class="label">' + r[0] + '</span>'
+         + '<span class="val">' + r[1] + '</span></div>';
+  }).join('');
+
+  app.innerHTML =
+    '<div class="card">'
+      + '<div class="card-title">Récapitulatif de la commande</div>'
+      + rowsHtml
+      + '<div style="margin-top:16px;font-size:.8rem;color:var(--sub)">Lien du bon cadeau :</div>'
+      + '<a class="voucher-link" href="' + url + '" target="_blank">' + url + '</a>'
+    + '</div>'
+
+    + '<a class="btn-send" href="' + mailto + '">📧 Envoyer le bon à ' + to + '</a>'
+
+    + '<a class="btn-preview" href="' + url + '" target="_blank">👁 Prévisualiser le bon cadeau</a>'
+
+    + '<p class="notice">Ce bouton ouvre votre application email avec le message pré-rédigé.<br>'
+      + 'Vérifiez et cliquez <strong>Envoyer</strong> dans votre messagerie.</p>';
+})();
+</script>
+</body>
+</html>
