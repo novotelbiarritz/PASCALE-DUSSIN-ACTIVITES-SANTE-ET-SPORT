@@ -2,88 +2,131 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bon Cadeau Coaching PrivÃ© â Pascale Dussin</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bon Cadeau Coaching Â· Pascale Dussin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 <style>
-  :root{--gold:#C9A84C;--gold2:#F0D080;--primary:#7A2800;--primary2:#A83C14;--accent:#C0552A;--white:#FAFAF5;}
+  :root{
+    --gold:#C9A84C;--gold2:#E8C97E;
+    --primary:#8B1A1A;--primary2:#5C0A0A;
+  }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:#1a1a1a;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px 40px;font-family:'Lato',sans-serif;}
+  body{
+    background:#111;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;
+    padding:20px 16px 40px;font-family:'Lato',sans-serif;
+  }
+  .actions{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap;justify-content:center;}
+  .btn{padding:10px 22px;border:none;border-radius:40px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.06em;}
+  .btn-send{background:var(--gold);color:#1a1a1a;}
+  .btn-dl{background:transparent;border:1.5px solid var(--gold);color:var(--gold);}
+  .notice{max-width:480px;text-align:center;color:#aaa;font-size:12px;margin-bottom:18px;line-height:1.5;}
+  .notice strong{color:var(--gold2);}
 
-  .actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s;}
-  .btn-send{background:var(--accent);color:#fff;}
-  .btn-dl{background:var(--gold);color:#1a1a1a;}
-  .btn:hover{opacity:.85;}
-  .notice{color:#aaa;font-size:12px;text-align:center;margin-bottom:16px;max-width:600px;}
+  /* CARD */
+  .card{
+    background:linear-gradient(160deg,#1f1a0e 0%,#2a1f0a 40%,#1a0a0a 100%);
+    border-radius:16px;
+    box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,76,.18);
+    max-width:480px;width:100%;overflow:hidden;
+  }
 
-  .card{width:100%;max-width:800px;background:var(--primary);border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.7);position:relative;}
-
-  .card-header{background:var(--primary);padding:22px 28px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+  /* header */
+  .card-header{background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:8px;}
   .logo-block{text-align:center;flex:1;}
-  .logo-name{font-family:'Cinzel',serif;color:#fff;font-size:clamp(18px,3.5vw,28px);letter-spacing:.08em;line-height:1;}
-  .logo-name span{color:var(--gold);}
-  .logo-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.22em;text-transform:uppercase;margin-top:4px;}
-  .logo-hotel{color:#ddd;font-size:clamp(7px,1.2vw,10px);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
-  .num-block{background:rgba(255,255,255,.12);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;white-space:nowrap;font-size:clamp(9px,1.5vw,12px);color:var(--gold2);font-family:'Cinzel',serif;letter-spacing:.05em;}
+  .logo-name{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(15px,3vw,22px);font-weight:700;letter-spacing:.12em;}
+  .logo-name span{color:var(--gold2);}
+  .logo-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:3px;}
+  .logo-hotel{color:#aaa;font-size:clamp(7px,1.2vw,10px);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+  .num-block{font-family:'Cinzel',serif;color:rgba(201,168,76,.55);font-size:clamp(7px,1.2vw,10px);letter-spacing:.1em;text-align:right;white-space:nowrap;}
 
-  .sep{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px 28px 0;}
+  .sep{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 24px;}
 
-  .card-title-block{text-align:center;padding:16px 28px 4px;}
-  .card-title{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:.06em;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.4);}
-  .card-subtitle{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.22em;text-transform:uppercase;margin-top:6px;font-weight:300;}
+  /* title */
+  .card-title-block{text-align:center;padding:14px 24px 6px;}
+  .card-title{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(18px,4vw,28px);font-weight:900;letter-spacing:.18em;}
+  .card-subtitle{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.2em;text-transform:uppercase;margin-top:4px;}
+  .leaf{text-align:center;font-size:20px;padding:4px 0 10px;}
 
-  .leaf{text-align:center;font-size:18px;color:var(--gold);margin:8px 0;}
+  /* HERO FORMULA */
+  .hero-formula{
+    text-align:center;padding:18px 24px 14px;
+    background:linear-gradient(180deg,rgba(0,0,0,.25),transparent);
+    border-bottom:1px solid rgba(201,168,76,.12);
+  }
+  .hero-label{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px;}
+  .hero-name{
+    font-family:'Cinzel',serif;color:var(--gold);
+    font-size:clamp(34px,9vw,60px);font-weight:900;
+    letter-spacing:.08em;line-height:1;
+    text-shadow:0 0 50px rgba(201,168,76,.5);
+  }
+  .hero-seances{color:#fff;font-size:clamp(13px,2.5vw,18px);font-weight:300;margin-top:10px;letter-spacing:.04em;}
+  .hero-tags{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.18em;text-transform:uppercase;margin-top:6px;opacity:.8;}
 
-  .card-body{display:flex;gap:0;min-height:220px;}
-  .card-img{width:42%;background:linear-gradient(160deg,#4A1200 0%,#7A2800 40%,#B05020 100%);position:relative;overflow:hidden;flex-shrink:0;}
-  .card-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:1;image-rendering:auto;}
-  .card-img-icon{font-size:64px;opacity:.35;}
-  .card-img-txt{position:absolute;bottom:14px;width:100%;text-align:center;color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;opacity:.85;}
-  .card-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--primary));pointer-events:none;}
-  .card-fields{flex:1;padding:18px 24px 18px 20px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
-  .field-row{display:flex;flex-direction:column;gap:2px;}
-  .field-label{color:var(--gold);font-size:clamp(9px,1.5vw,11px);letter-spacing:.2em;text-transform:uppercase;font-weight:700;}
-  .field-value{color:#fff;font-size:clamp(12px,2vw,15px);border-bottom:1px dotted rgba(201,168,76,.4);padding-bottom:4px;min-height:22px;font-weight:300;letter-spacing:.03em;}
-  .field-value.empty{color:rgba(255,255,255,.3);font-style:italic;}
+  /* recipients */
+  .recipient-block{margin:16px 20px 0;background:rgba(0,0,0,.25);border-radius:10px;border:1px solid rgba(201,168,76,.2);overflow:hidden;}
+  .rec-row{display:flex;align-items:baseline;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(201,168,76,.1);}
+  .rec-row:last-child{border-bottom:none;}
+  .rec-label{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;font-weight:700;min-width:90px;flex-shrink:0;}
+  .rec-value{color:#fff;font-size:clamp(15px,2.8vw,20px);font-weight:300;font-style:italic;}
+  .rec-value.empty{color:rgba(255,255,255,.25);}
 
-  .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 24px 0;}
-  .pkg{background:rgba(0,0,0,.3);border:1.5px solid rgba(201,168,76,.4);border-radius:8px;text-align:center;padding:10px 6px;position:relative;}
-  .pkg.active{border-color:var(--gold);background:rgba(201,168,76,.12);}
-  .pkg-name{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(10px,1.8vw,13px);font-weight:700;letter-spacing:.08em;}
-  .pkg-detail{color:#ccc;font-size:clamp(9px,1.5vw,11px);margin-top:3px;line-height:1.4;}
-  .pkg-price{display:none;}
-  .pkg-eco{display:none;}
-  .pkg-check{position:absolute;top:-8px;right:-8px;background:var(--gold);color:#1a1a1a;border-radius:50%;width:18px;height:18px;font-size:11px;display:none;align-items:center;justify-content:center;font-weight:700;}
-  .pkg.active .pkg-check{display:flex;}
+  /* MESSAGE */
+  .message-block{
+    margin:16px 20px 0;
+    background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03));
+    border:1.5px solid rgba(201,168,76,.4);
+    border-radius:12px;padding:16px 20px;position:relative;
+  }
+  .message-block.hidden{display:none;}
+  .message-label{
+    color:var(--gold);font-size:clamp(8px,1.3vw,10px);
+    letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    margin-bottom:10px;display:flex;align-items:center;gap:8px;
+  }
+  .message-label::before{content:'â';font-size:14px;}
+  .message-text{
+    color:#f0e8d0;font-size:clamp(14px,2.6vw,19px);
+    font-style:italic;font-weight:300;line-height:1.6;
+  }
+  .message-text::before{content:'\201C';color:var(--gold);font-size:1.5em;line-height:0;vertical-align:-.25em;margin-right:2px;}
+  .message-text::after{content:'\201D';color:var(--gold);font-size:1.5em;line-height:0;vertical-align:-.25em;margin-left:2px;}
 
-  .panachable{text-align:center;padding:8px 24px 0;color:var(--gold2);font-size:clamp(9px,1.5vw,11px);font-style:italic;letter-spacing:.05em;}
-
-  .validity-band{background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1));margin:14px 24px 0;border-radius:40px;text-align:center;padding:10px 20px;border:1.5px solid var(--gold);}
+  /* validity */
+  .validity-band{background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1));margin:16px 20px 0;border-radius:40px;text-align:center;padding:10px 20px;border:1.5px solid var(--gold);}
   .validity-main{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(16px,3vw,24px);font-weight:700;letter-spacing:.12em;}
   .validity-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
 
-  .sep2{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px 28px;}
+  /* CTA */
+  .cta-block{
+    margin:16px 20px 0;
+    background:linear-gradient(135deg,rgba(139,26,26,.35),rgba(92,10,10,.2));
+    border:1.5px solid rgba(201,168,76,.45);
+    border-radius:12px;padding:18px 20px;text-align:center;
+  }
+  .cta-title{color:var(--gold);font-family:'Cinzel',serif;font-size:clamp(11px,2.2vw,16px);font-weight:700;letter-spacing:.1em;margin-bottom:6px;}
+  .cta-text{color:#ccc;font-size:clamp(10px,1.8vw,13px);line-height:1.6;margin-bottom:12px;}
+  .cta-phone{
+    display:inline-block;background:var(--gold);color:#1a1a1a;
+    font-size:clamp(18px,4vw,28px);font-weight:700;
+    padding:10px 28px;border-radius:40px;letter-spacing:.05em;
+    text-decoration:none;cursor:pointer;
+  }
+  .cta-addr{color:#999;font-size:clamp(9px,1.5vw,11px);margin-top:10px;line-height:1.6;}
+  .cta-addr strong{color:#ccc;}
 
-  .card-footer{background:rgba(0,0,0,.35);display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;align-items:center;padding:14px 24px;gap:0;}
-  .foot-col{text-align:center;padding:0 12px;}
-  .foot-div{width:1px;background:rgba(201,168,76,.4);height:60px;align-self:center;}
-  .foot-icon{font-size:18px;margin-bottom:4px;}
-  .foot-title{color:var(--gold);font-size:clamp(7px,1.3vw,10px);letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
-  .foot-name{font-family:'Lato',sans-serif;color:#fff;font-size:clamp(14px,2.5vw,20px);font-style:italic;font-weight:300;}
-  .foot-phone{color:var(--gold2);font-size:clamp(10px,1.8vw,15px);font-weight:700;letter-spacing:.04em;}
-  .foot-addr{color:#ccc;font-size:clamp(7px,1.2vw,11px);line-height:1.5;}
-  .foot-addr strong{color:#fff;}
-  .foot-right{color:#ccc;font-size:clamp(7px,1.2vw,10px);line-height:1.6;}
+  .sep2{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px 28px 0;}
 
-  .card-bottom-bar{background:linear-gradient(90deg,var(--primary2),#6B2000,var(--primary2));padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;}
+  /* bottom bar */
+  .card-bottom-bar{background:linear-gradient(90deg,var(--primary2),#6B2000,var(--primary2));padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px;}
   .bar-text{color:var(--gold2);font-size:clamp(7px,1.3vw,11px);letter-spacing:.15em;text-transform:uppercase;}
   .bar-sep{color:var(--gold);font-size:14px;}
 
   @media print{
     body{background:#fff;padding:0;display:block;}
     .actions,.notice{display:none!important;}
+    .cta-phone{background:var(--gold)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .card{max-width:100%;border-radius:0;box-shadow:none;page-break-inside:avoid;}
   }
 </style>
@@ -114,96 +157,59 @@
     <div class="card-title">BON CADEAU</div>
     <div class="card-subtitle">Coaching PrivÃ© Â· Sport Â· Yoga Â· Pilates</div>
   </div>
-  <div class="leaf">ð§</div>
+  <div class="leaf">ð¿</div>
 
-  <div class="card-body">
-    <div class="card-img">
-      <img src="pascale-photo.png" alt="Pascale Dussin" onerror="this.style.display='none'">
-      <div class="card-img-txt">Sport Â· Yoga Â· Pilates</div>
-      <div class="card-img-overlay"></div>
+  <!-- HERO : formule en grand -->
+  <div class="hero-formula">
+    <div class="hero-label">Formule offerte</div>
+    <div class="hero-name" id="heroName">â</div>
+    <div class="hero-seances" id="heroSeances"></div>
+    <div class="hero-tags">Sport &middot; Yoga &middot; Pilates â sÃ©ances Ã  composer librement â¦</div>
+  </div>
+
+  <!-- Destinataire -->
+  <div class="recipient-block">
+    <div class="rec-row">
+      <span class="rec-label">Pour</span>
+      <span class="rec-value" id="fPour">&nbsp;</span>
     </div>
-    <div class="card-fields">
-      <div class="field-row">
-        <span class="field-label">Pour</span>
-        <span class="field-value" id="fPour">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">De la part de</span>
-        <span class="field-value" id="fDe">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">Formule</span>
-        <span class="field-value" id="fSoin">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">SÃ©ances</span>
-        <span class="field-value" id="fDuree">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">Message</span>
-        <span class="field-value" id="fMsg">&nbsp;</span>
-      </div>
+    <div class="rec-row">
+      <span class="rec-label">De la part de</span>
+      <span class="rec-value" id="fDe">&nbsp;</span>
     </div>
   </div>
 
-  <!-- Packages -->
-  <div class="packages">
-    <div class="pkg" id="pkg-declic">
-      <div class="pkg-check">â</div>
-      <div class="pkg-name">LE DÃCLIC</div>
-      <div class="pkg-detail">1 sÃ©ance individuelle<br>de 1h</div>
-      <div class="pkg-price">60 â¬</div>
-    </div>
-    <div class="pkg" id="pkg-boost">
-      <div class="pkg-check">â</div>
-      <div class="pkg-name">LE BOOST</div>
-      <div class="pkg-detail">3 sÃ©ances individuelles<br>de 1h</div>
-      <div class="pkg-price">165 â¬</div>
-      <div class="pkg-eco">15 â¬ d'Ã©conomie</div>
-    </div>
-    <div class="pkg" id="pkg-equilibre">
-      <div class="pkg-check">â</div>
-      <div class="pkg-name">L'ÃQUILIBRE</div>
-      <div class="pkg-detail">5 sÃ©ances individuelles<br>de 1h</div>
-      <div class="pkg-price">250 â¬</div>
-      <div class="pkg-eco">50 â¬ d'Ã©conomie</div>
-    </div>
+  <!-- Message du donateur (masquÃ© si vide) -->
+  <div class="message-block hidden" id="msgBlock">
+    <div class="message-label">Message</div>
+    <div class="message-text" id="fMsg"></div>
   </div>
-  <div class="panachable">â¦ SÃ©ances Ã  composer librement : Sport Â· Yoga Â· Pilates â¦</div>
 
+  <!-- ValiditÃ© -->
   <div class="validity-band">
     <div class="validity-main">VALABLE 6 MOIS</div>
     <div class="validity-sub">Non remboursable â Non Ã©changeable</div>
   </div>
 
-  <div class="sep2"></div>
-
-  <div class="card-footer">
-    <div class="foot-col">
-      <div class="foot-icon">ð</div>
-      <div class="foot-addr"><strong>Novotel<br>Biarritz Anglet</strong><br>68 avenue d'Espagne<br>64600 Anglet</div>
-    </div>
-    <div class="foot-div"></div>
-    <div class="foot-col">
-      <div class="foot-icon">ð</div>
-      <div class="foot-title">Votre coach</div>
-      <div class="foot-name">Pascale</div>
-      <div class="foot-phone">06 72 17 49 95</div>
-    </div>
-    <div class="foot-div"></div>
-    <div class="foot-col">
-      <div class="foot-icon">ð</div>
-      <div class="foot-title">RÃ©servez vos sÃ©ances</div>
-      <div class="foot-right">AuprÃ¨s de votre coach<br>ou sur l'appli<br><strong style="color:var(--gold2)">Pascale Dussin<br>Novotel Biarritz Anglet</strong></div>
+  <!-- CTA : appeler Pascale -->
+  <div class="cta-block">
+    <div class="cta-title">ð Pour planifier vos sÃ©ances</div>
+    <div class="cta-text">Contactez votre coach pour convenir de la date,<br>de l'horaire et de la discipline qui vous conviennent.</div>
+    <a class="cta-phone" href="tel:0672174995">06 72 17 49 95</a>
+    <div class="cta-addr">
+      <strong>Pascale Dussin</strong><br>
+      Novotel Biarritz Anglet Â· 68 avenue d'Espagne Â· 64600 Anglet
     </div>
   </div>
 
+  <div class="sep2"></div>
+
   <div class="card-bottom-bar">
-    <span class="bar-text">ð§</span>
+    <span class="bar-text">ð¿</span>
     <span class="bar-text">Pascale Dussin Â· Novotel Biarritz Anglet</span>
     <span class="bar-sep">|</span>
     <span class="bar-text">Sport Â· Yoga Â· Pilates Â· Coaching</span>
-    <span class="bar-text">ð§</span>
+    <span class="bar-text">ð¿</span>
   </div>
 
 </div>
@@ -227,31 +233,38 @@
   };
   var activePkg = packages[pkg] || null;
 
-  /* ââ helper : remplir un champ ââ */
-  function set(id, val){
-    var el = document.getElementById(id);
-    if(!el) return;
-    el.textContent = val;
-    if(val === 'â¦') el.classList.add('empty');
-  }
-
-  /* ââ Remplir le bon cadeau ââ */
+  /* numÃ©ro */
   document.getElementById('numVal').textContent = num;
-  set('fPour',  pour || 'â¦');
-  set('fDe',    de   || 'â¦');
-  set('fSoin',  activePkg ? activePkg.name : (g('soin') || 'â¦'));
-  set('fDuree', activePkg ? activePkg.seances + ' (Sport, Yoga ou Pilates)' : (g('duree') || 'â¦'));
-  set('fMsg',   msg  || 'â¦');
 
-  /* ââ Mettre en surbrillance la formule choisie ââ */
-  if(pkg && packages[pkg]){
-    var pkgEl = document.getElementById('pkg-'+pkg);
-    if(pkgEl) pkgEl.classList.add('active');
+  /* hÃ©ro formule */
+  if(activePkg){
+    document.getElementById('heroName').textContent = activePkg.name;
+    document.getElementById('heroSeances').textContent = activePkg.seances;
+  } else {
+    var fallback = g('soin') || g('formule') || '';
+    document.getElementById('heroName').textContent = fallback || 'â';
+    document.getElementById('heroSeances').textContent = g('duree') || '';
   }
 
-  /* ââ Bouton "Envoyer au client" ââ */
+  /* destinataire */
+  var pourEl = document.getElementById('fPour');
+  pourEl.textContent = pour || 'â¦';
+  if(!pour) pourEl.classList.add('empty');
+
+  var deEl = document.getElementById('fDe');
+  deEl.textContent = de || 'â¦';
+  if(!de) deEl.classList.add('empty');
+
+  /* message : affichÃ© seulement si renseignÃ© */
+  var msgBlock = document.getElementById('msgBlock');
+  if(msg && msg.trim() !== '' && msg !== 'â¦'){
+    document.getElementById('fMsg').textContent = msg;
+    msgBlock.classList.remove('hidden');
+  }
+
+  /* envoi au client */
   window.sendToClient = function(){
-    var pkgObj = activePkg || {name: g('soin')||'â', seances: g('duree')||'â', prix: g('prix')||'â', eco:''};
+    var pkgObj = activePkg || {name:g('soin')||'â',seances:g('duree')||'â',prix:g('prix')||'â',eco:''};
     if(!email){ alert('Adresse email du client non disponible dans ce lien.'); return; }
     var pageUrl = window.location.href;
     var subj = encodeURIComponent('ð Votre Bon Cadeau Coaching PrivÃ© â NÂ°'+num);
@@ -262,17 +275,16 @@
       'âââââââââââââââââââââââ\n'+
       'ð BON CADEAU NÂ° '+num+'\n'+
       'âââââââââââââââââââââââ\n'+
-      'Formule    : '+pkgObj.name+'\n'+
-      'SÃ©ances    : '+pkgObj.seances+'\n'+
-      'Montant    : '+pkgObj.prix+'\n'+
-      (pkgObj.eco ? 'Ãconomie   : '+pkgObj.eco+'\n' : '')+
-      (pour ? 'Pour       : '+pour+'\n' : '')+
-      (msg && msg !== 'â¦' ? 'Message    : '+msg+'\n' : '')+
+      'Formule  : '+pkgObj.name+'\n'+
+      'SÃ©ances  : '+pkgObj.seances+'\n'+
+      (pkgObj.eco ? 'Ãconomie : '+pkgObj.eco+'\n' : '')+
+      (pour ? 'Pour     : '+pour+'\n' : '')+
+      (msg && msg !== 'â¦' ? 'Message  : '+msg+'\n' : '')+
       'âââââââââââââââââââââââ\n'+
       'Les sÃ©ances sont Ã  composer librement : Sport, Yoga ou Pilates.\n'+
       'Ce bon cadeau est valable 6 mois Ã  compter de ce jour.\n\n'+
-      'âº Visualisez et imprimez votre bon cadeau ici :\n'+pageUrl+'\n\n'+
-      'Pour rÃ©server vos sÃ©ances :\n'+
+      'â¸ Visualisez et imprimez votre bon cadeau ici :\n'+pageUrl+'\n\n'+
+      'ð Pour rÃ©server vos sÃ©ances :\n'+
       'ð Pascale : 06 72 17 49 95\n'+
       'ð Novotel Biarritz Anglet, 68 avenue d\'Espagne, 64600 Anglet\n\n'+
       'Ã trÃ¨s bientÃ´t !\nPascale Dussin\nCoach Sport & Bien-Ãªtre Â· Novotel Biarritz Anglet'
