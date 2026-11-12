@@ -2,197 +2,83 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Bon Cadeau Coaching · Pascale Dussin</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 <style>
   :root{
     --gold:#C9A84C;--gold2:#E8C97E;
-    --primary:#8B1A1A;--primary2:#5C0A0A;
+    --bg:#0d0d0d;--card:#111;--card2:#1a1a1a;
+    --text:#f0f0f0;--sub:#aaa;--border:rgba(201,168,76,.25);
+    --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
-    background:#111;min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;
-    padding:20px 16px 40px;font-family:'Lato',sans-serif;
+    background:var(--bg);color:var(--text);
+    font-family:'Lato',sans-serif;
+    min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;padding:24px 16px 48px;
   }
-  .actions{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap;justify-content:center;}
-  .btn{padding:10px 22px;border:none;border-radius:40px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.06em;}
-  .btn-send{background:var(--gold);color:#1a1a1a;}
-  .btn-dl{background:transparent;border:1.5px solid var(--gold);color:var(--gold);}
-  .notice{max-width:480px;text-align:center;color:#aaa;font-size:12px;margin-bottom:18px;line-height:1.5;}
-  .notice strong{color:var(--gold2);}
-
-  /* CARD */
-  .card{
-    background:linear-gradient(160deg,#1f1a0e 0%,#2a1f0a 40%,#1a0a0a 100%);
-    border-radius:16px;
-    box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,76,.18);
-    max-width:480px;width:100%;overflow:hidden;
-  }
-
-  /* header */
-  .card-header{background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:8px;}
-  .logo-block{text-align:center;flex:1;}
-  .logo-name{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(15px,3vw,22px);font-weight:700;letter-spacing:.12em;}
+  .actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;width:100%;max-width:580px;}
+  .btn{padding:10px 22px;border:none;border-radius:40px;font-family:'Lato',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;letter-spacing:.04em;transition:opacity .2s;}
+  .btn:hover{opacity:.85;}
+  .btn-dl{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;}
+  .notice{font-size:.78rem;color:#666;text-align:center;margin-bottom:24px;max-width:580px;line-height:1.6;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:580px;overflow:hidden;}
+  .card-header{background:linear-gradient(160deg,#1a0a0a 0%,#2a1010 60%,#1a1a1a 100%);padding:28px 24px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+  .logo-block{flex:1;text-align:center;}
+  .logo-name{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(28px,7vw,42px);font-weight:900;letter-spacing:.06em;line-height:1;text-shadow:0 0 40px rgba(201,168,76,.4);}
   .logo-name span{color:var(--gold2);}
-  .logo-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:3px;}
-  .logo-hotel{color:#aaa;font-size:clamp(7px,1.2vw,10px);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
-  .num-block{font-family:'Cinzel',serif;color:rgba(201,168,76,.55);font-size:clamp(7px,1.2vw,10px);letter-spacing:.1em;text-align:right;white-space:nowrap;}
-
-  .sep{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 24px;}
-
-  /* title */
-  .card-title-block{text-align:center;padding:14px 24px 6px;}
-  .card-title{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(18px,4vw,28px);font-weight:900;letter-spacing:.18em;}
-  .card-subtitle{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.2em;text-transform:uppercase;margin-top:4px;}
-  .leaf{text-align:center;font-size:20px;padding:4px 0 10px;}
-
-  /* HERO FORMULA */
-  .hero-formula{
-    text-align:center;padding:18px 24px 14px;
-    background:linear-gradient(180deg,rgba(0,0,0,.25),transparent);
-    border-bottom:1px solid rgba(201,168,76,.12);
-  }
-  .hero-label{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px;}
-  .hero-name{
-    font-family:'Cinzel',serif;color:var(--gold);
-    font-size:clamp(34px,9vw,60px);font-weight:900;
-    letter-spacing:.08em;line-height:1;
-    text-shadow:0 0 50px rgba(201,168,76,.5);
-  }
-  .hero-seances{color:#fff;font-size:clamp(13px,2.5vw,18px);font-weight:300;margin-top:10px;letter-spacing:.04em;}
-  .hero-tags{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.18em;text-transform:uppercase;margin-top:6px;opacity:.8;}
-
-  /* recipients */
-  .recipient-block{margin:16px 20px 0;background:rgba(0,0,0,.25);border-radius:10px;border:1px solid rgba(201,168,76,.2);overflow:hidden;}
-  .rec-row{display:flex;align-items:baseline;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(201,168,76,.1);}
-  .rec-row:last-child{border-bottom:none;}
-  .rec-label{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;font-weight:700;min-width:90px;flex-shrink:0;}
-  .rec-value{color:#fff;font-size:clamp(15px,2.8vw,20px);font-weight:300;font-style:italic;}
-  .rec-value.empty{color:rgba(255,255,255,.25);}
-
-  /* MESSAGE */
-  .message-block{
-    margin:16px 20px 0;
-    background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03));
-    border:1.5px solid rgba(201,168,76,.4);
-    border-radius:12px;padding:16px 20px;position:relative;
-  }
-  .message-block.hidden{display:none;}
-  .message-label{
-    color:var(--gold);font-size:clamp(8px,1.3vw,10px);
-    letter-spacing:.22em;text-transform:uppercase;font-weight:700;
-    margin-bottom:10px;display:flex;align-items:center;gap:8px;
-  }
-  .message-label::before{content:'✉';font-size:14px;}
-  .message-text{
-    color:#f0e8d0;font-size:clamp(14px,2.6vw,19px);
-    font-style:italic;font-weight:300;line-height:1.6;
-  }
-  .message-text::before{content:'\201C';color:var(--gold);font-size:1.5em;line-height:0;vertical-align:-.25em;margin-right:2px;}
-  .message-text::after{content:'\201D';color:var(--gold);font-size:1.5em;line-height:0;vertical-align:-.25em;margin-left:2px;}
-
-  /* validity */
-  .validity-band{background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1));margin:16px 20px 0;border-radius:40px;text-align:center;padding:10px 20px;border:1.5px solid var(--gold);}
-  .validity-main{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(16px,3vw,24px);font-weight:700;letter-spacing:.12em;}
-  .validity-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
-
-  /* CTA */
-  .cta-block{
-    margin:16px 20px 0;
-    background:linear-gradient(135deg,rgba(139,26,26,.35),rgba(92,10,10,.2));
-    border:1.5px solid rgba(201,168,76,.45);
-    border-radius:12px;padding:18px 20px;text-align:center;
-  }
-  .cta-title{color:var(--gold);font-family:'Cinzel',serif;font-size:clamp(11px,2.2vw,16px);font-weight:700;letter-spacing:.1em;margin-bottom:6px;}
-  .cta-text{color:#ccc;font-size:clamp(10px,1.8vw,13px);line-height:1.6;margin-bottom:12px;}
-  .cta-phone{
-    display:inline-block;background:var(--gold);color:#1a1a1a;
-    font-size:clamp(18px,4vw,28px);font-weight:700;
-    padding:10px 28px;border-radius:40px;letter-spacing:.05em;
-    text-decoration:none;cursor:pointer;
-  }
-  .cta-addr{color:#999;font-size:clamp(9px,1.5vw,11px);margin-top:10px;line-height:1.6;}
-  .cta-addr strong{color:#ccc;}
-
-  .sep2{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px 28px 0;}
-
-  /* bottom bar */
-  .card-bottom-bar{background:linear-gradient(90deg,var(--primary2),#6B2000,var(--primary2));padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px;}
-  .bar-text{color:var(--gold2);font-size:clamp(7px,1.3vw,11px);letter-spacing:.15em;text-transform:uppercase;}
-  .bar-sep{color:var(--gold);font-size:14px;}
-
-  @media print{
-    body{background:#fff;padding:0;display:block;}
-    .actions,.notice{display:none!important;}
-    .cta-phone{background:var(--gold)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .card{max-width:100%;border-radius:0;box-shadow:none;page-break-inside:avoid;}
-  }
+  .logo-sub{color:#fff;font-size:clamp(11px,2.2vw,14px);font-weight:300;margin-top:6px;letter-spacing:.05em;}
+  .logo-hotel{color:var(--gold2);font-size:clamp(9px,1.5vw,11px);letter-spacing:.14em;text-transform:uppercase;margin-top:4px;opacity:.8;}
+  .num-block{font-size:.7rem;text-align:right;color:var(--sub);letter-spacing:.08em;min-width:80px;}
+  .num-block strong{display:block;font-size:.85rem;color:var(--gold);margin-top:3px;}
+  .sep{height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);}
+  .card-gift{padding:24px 24px 0;text-align:center;}
+  .card-gift-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .card-gift-title{font-family:'Cinzel',serif;font-size:clamp(18px,4.5vw,28px);font-weight:700;color:#fff;letter-spacing:.04em;line-height:1.2;}
+  .recipient-block{margin:20px 20px 0;background:rgba(201,168,76,.06);border:1px solid var(--border);border-radius:10px;padding:16px 20px;}
+  .recipient-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(201,168,76,.1);}
+  .recipient-row:last-child{border-bottom:none;}
+  .recipient-label{color:var(--sub);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;min-width:80px;padding-top:1px;}
+  .recipient-val{color:#fff;font-size:.95rem;font-weight:400;line-height:1.4;}
+  .recipient-val.name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold2);font-weight:700;}
+  .msg-block{margin:16px 20px 0;background:rgba(255,255,255,.03);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;font-style:italic;color:#ccc;font-size:.9rem;line-height:1.6;}
+  .info-section{margin:20px 20px 0;text-align:center;color:var(--sub);font-size:.8rem;line-height:1.6;}
+  .info-section strong{color:var(--gold2);}
+  .card-footer{margin-top:20px;background:rgba(201,168,76,.05);border-top:1px solid var(--border);padding:18px 24px;text-align:center;}
+  .footer-cta{font-size:.82rem;color:var(--sub);line-height:1.7;}
+  .footer-tel{font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.05em;margin-top:4px;}
+  .footer-sig{font-size:.72rem;color:#555;margin-top:8px;letter-spacing:.08em;text-transform:uppercase;}
+  @media print{body{background:#fff;padding:0;}.actions,.notice{display:none;}.card{border:none;max-width:100%;border-radius:0;}.card-header{background:#111 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
 </style>
 </head>
 <body>
-
 <div class="actions">
-  <button class="btn btn-send" onclick="sendToClient()">📧 Envoyer au client</button>
-  <button class="btn btn-dl" onclick="window.print()">⬇️ Télécharger / Imprimer PDF</button>
+  <button class="btn btn-dl" onclick="window.print()">&#11015;&#65039; Télécharger / Imprimer</button>
 </div>
-<p class="notice">Une fois le paiement encaissé, cliquez sur <strong>« Envoyer au client »</strong> pour lui adresser son bon cadeau.</p>
-
-<div class="card" id="card">
-
-  <div class="card-header">
-    <div style="width:60px;flex-shrink:0;"></div>
-    <div class="logo-block">
-      <div class="logo-name">Pascale <span>Dussin</span></div>
-      <div class="logo-sub">Coaching Privé · Santé &amp; Sport</div>
-      <div class="logo-hotel">Novotel Biarritz Anglet</div>
-    </div>
-    <div class="num-block">Bon cadeau N°&nbsp;<span id="numVal">—</span></div>
-  </div>
-
-  <div class="sep"></div>
-
-  <div class="card-title-block">
-    <div class="card-title">BON CADEQT𽑥��(�����؁�����􉍅ɐ��Չѥѱ���
-��������Aɥ���
-܁M���Ѓ
-܁e����
-܁A���ѕ�𽑥��(��𽑥��(���؁�����􉱕�����~2�𽑥��((�������!I<�聙�ɵձ������Ʌ������(���؁�����􉡕ɼ���ɵձ���(�����؁�����􉡕ɼ���������ɵձ�������є𽑥��(�����؁�����􉡕ɼ���������􉡕ɽ9������P𽑥��(�����؁�����􉡕ɼ�͕����̈���􉡕ɽM�����̈�𽑥��(�����؁�����􉡕ɼ�х�̈�M���Ѐ��������e������������A���ѕ̃�P�������̃�������͕ȁ���ɕ���Ѓ�r�𽑥��(��𽑥��((���������ѥ��х�ɔ����(���؁������ɕ������е�������(�����؁������ɕ��ɽ܈�(������������������ɕ���������A���������(������������������ɕ��م�Ք�����A��Ȉ�������������(����𽑥��(�����؁������ɕ��ɽ܈�(������������������ɕ�����������������Ё��������(������������������ɕ��م�Ք��������������������(����𽑥��(��𽑥��((�������5��ͅ����ԁ����ѕ�Ȁ��������ͤ�٥�������(���؁�����􉵕�ͅ��������������������͝	������(�����؁�����􉵕�ͅ����������5��ͅ��𽑥��(�����؁�����􉵕�ͅ���ѕ�Ј����5͜��𽑥��(��𽑥��((�������Y�����������(���؁������م�����䵉�����(�����؁������م�����䵵�����Y1	1�؁5=%L𽑥��(�����؁������م�������Ո��9���ɕ�����ͅ�����L�9��������������𽑥��(��𽑥��((�������
-Q�聅�����ȁA�͍�������(���؁������ф��������(�����؁������ф�ѥѱ����~Nx�A��ȁ�ѥ��͕ȁ���������������A�͍���𽑥��(�����؁������ф�ѕ�Ј�1�����ͽ�����դ�ɗ���Ё����������Ё������ȁA�͍���������ȁ��������ȁ�����є������Ʌ�ɔ��Ё����ѥ٥�������ͥ��𽑥��(����񄁍�����ф���������ɕ��ѕ�����������Ԉ��؀�Ȁ�܀������(�����؁������ф����Ȉ�(���������ɽ���A�͍������ͥ����ɽ������(������9�ٽѕ��	���ɥ������Ѓ
-܀����ٕ�Ք����������
-܀�����������(����𽑥��(��𽑥��((���؁������͕�Ȉ�𽑥��((���؁�����􉍅ɐ����ѽ����Ȉ�(���������������􉉅ȵѕ�Ј��~2�������(���������������􉉅ȵѕ�Ј�A�͍������ͥ��
-܁9�ٽѕ��	���ɥ�������������(���������������􉉅ȵ͕����������(���������������􉉅ȵѕ�Ј�M���Ѓ
-܁e����
-܁A���ѕ̃
-܁
-�������������(���������������􉉅ȵѕ�Ј��~2�������(��𽑥��((𽑥��((�͍ɥ���(��չ�ѥ�����(��مȁ��􁹕܁UI1M��ɍ�A�Ʌ�̡ݥ���ܹ����ѥ���͕�ɍ���(���չ�ѥ��������ɕ��ɸ�������UI%
-�������С����С���𜜤��((��مȁ�մ����􁜠��մ���������A�AIX�����܁�є������ձ�e��Ƞ������M�ɥ����є���ܠ���ͱ�����ؤ��(��مȁ���Ȁ��􁜠����М�����������Ȝ��������(��مȁ�������􁜠����������������ɕ���������������������ɥ����������(��مȁ�������􀡜��������񜠝��ɵձ����𜜤�ѽ1�ݕ�
-�͔���(��مȁ�͜����􁜠��͜����������(��مȁ�������􁜠��������������((��مȁ�������̀��(������������耀��������1�%
-1%������͕������ā�����������٥�Օ�������Š�����ɥ������
-��������蜝��(���������М耀���������1�	==MP�������͕������́������́����٥�Օ���́���Š���ɥ����ԃ�
-���������ԃ�
-���p������������(�������ե���ɔ��������1p�%EU%1%	I���͕������ԁ������́����٥�Օ���́���Š���ɥ�������
-������������
-���p�����������(����(��مȁ��ѥٕA������������m���t�����ձ��((������շ�ɼ���(�����յ��й���������	�%����յY�����ѕ��
-��ѕ�Ѐ�մ�((�������ɼ���ɵձ����(�������ѥٕA����(�������յ��й���������	�%�����ɽ9������ѕ��
-��ѕ�Ѐ􁅍ѥٕA��������(�������յ��й���������	�%�����ɽM�����̜��ѕ��
-��ѕ�Ѐ􁅍ѥٕA���͕������(��􁕱͔��(����مȁ���������􁜠�ͽ�������������ɵձ����������(�������յ��й���������	�%�����ɽ9������ѕ��
-��ѕ�Ѐ􁙅������������P��(�������յ��й���������	�%�����ɽM�����̜��ѕ��
-��ѕ�Ѐ􁜠���ɕ����������(���((��������ѥ��х�ɔ���(��مȁ������􁑽�յ��й���������	�%����A��Ȝ��(��������ѕ��
-��ѕ�Ѐ����ȁ��������(���������Ȥ������������1��й���������䜤�((��مȁ����􁑽�յ��й���������	�%��������(������ѕ��
-��ѕ�Ѐ􁑔���������(�������������������1��й���������䜤�((��������ͅ���聅�������͕ձ����Ёͤ�ɕ�͕�������(��مȁ�͝	�����􁑽�յ��й���������	�%����͝	�������(������͜�����͜��ɥ������􀜜�����͜���􀟊����(�������յ��й���������	�%����5͜���ѕ��
-��ѕ�Ѐ�͜�(�����͝	����������1��йɕ��ٔ�����������(���((�������ٽ���ԁ�����Ѐ��(��ݥ���ܹ͕��Q�
-����Ѐ�չ�ѥ�����(����مȁ���=���􁅍ѥٕA�����������霠�ͽ������P��͕�����霠���ɕ�����P���ɥ�霠��ɥ�����P�����蜝��(��������������쁅���Р��ɕ�͔��������ԁ�����Ё������������������́�����������ɕ��ɸ��(����مȁ����Uɰ��ݥ���ܹ����ѥ����ɕ��(����مȁ�Չ��􁕹����UI%
-�������Р��~:�Y��ɔ�	���
-����ԁ
-��������Aɥ����L�;
-����մ��(����مȁ����􁕹����UI%
-�������Р(�������	�����Ȁ��������񑔤���q�q���(�������Mեє���ٽ�ɔ�����Ё������������ԁ
-��������Aɥ���q���(����������ٽ�́�����ɵ���Ք�ٽ�ɔ��������Ё�������������ɕ�������q�q���(��������R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�Rq���(��������~:�	=8�
-T�;
-�����մ��q���(��������R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�Rq���(��������ɵձ���耜����=���������q���(�������O�����̀�耜����=���͕����̬�q���(����������=����������%��������耜����=��������q���耜���(����������Ȁ���A��Ȁ����耜����Ȭ�q���耜���(��������͜�����͜���􀟊������5��ͅ����耜��͜��q���耜���(��������R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�R�Rq���(�������1�́������́ͽ�Ѓ�������͕ȁ���ɕ���Ѐ�M���а�e�����ԁA���ѕ̹q���(�������
-�����������ԁ��Ёم������؁���̃������ѕȁ���������ȹq�q���(���������ZˊZȁY��Յ��͕聕Ё���ɥ���ٽ�ɔ����������ԁ�����q�������Uɰ��q�q���(��������~Nx�A��ȁ��������ȁٽ́������̰��������A�͍�����Ԁ�q���(��������؀�Ȁ�܀����q���(��������~N4�9�ٽѕ��	���ɥ������а�����ٕ�Ք��p��������������������q�q���(������� ����́������Ѐ�q�A�͍������ͥ�q�
-�����M���Ѐ��	������ɔ�
-܁9�ٽѕ��	���ɥ������М(������(����ݥ���ܹ����ѥ����ɕ��􀝵���Ѽ蜭������UI%
-�������С����������Չ��������Չ����������������(����)�����(�͍ɥ���(𽉽���(�ѵ��
+<p class="notice">Ce bon cadeau est personnel et non cessible.<br>Sa durée de validité est d'un an à compter de la date d'achat.</p>
+<div id="app"></div>
+<script>
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  var num=p.get('num')||'';var dest=p.get('dest')||'';
+  var de=p.get('de')||'';var pkg=p.get('pkg')||'';var msg=p.get('msg')||'';
+  var app=document.getElementById('app');
+  var numHtml=num?'<div class="num-block">Bon Cadeau<strong>N° '+num+'</strong></div>':'<div class="num-block"></div>';
+  var giftTitle=pkg?'<div class="card-gift"><div class="card-gift-label">Formule offerte</div><div class="card-gift-title">'+pkg+'</div></div>':'';
+  var destRow=dest?'<div class="recipient-row"><span class="recipient-label">Offert à</span><span class="recipient-val name">'+dest+'</span></div>':'';
+  var deRow=de?'<div class="recipient-row"><span class="recipient-label">Offert par</span><span class="recipient-val">'+de+'</span></div>':'';
+  var recipientHtml=(destRow||deRow)?'<div class="recipient-block">'+destRow+deRow+'</div>':'';
+  var msgHtml=msg?'<div class="msg-block">“'+msg+'”</div>':'';
+  app.innerHTML='<div class="card">'
+    +'<div class="card-header"><div class="logo-block"><div class="logo-name">Pascale <span>Dussin</span></div><div class="logo-sub">Coaching Privé · Santé &amp; Sport</div><div class="logo-hotel">Novotel Biarritz Anglet</div></div>'+numHtml+'</div>'
+    +'<div class="sep"></div>'
+    +giftTitle+recipientHtml+msgHtml
+    +'<div class="info-section">Valable <strong>1 an</strong> à compter de la date d'achat.<br>Non remboursable &bull; Non cessible.</div>'
+    +'<div class="card-footer"><div class="footer-cta">Pour planifier votre séance, contactez Pascale :</div><div class="footer-tel">06 72 17 49 95</div><div class="footer-sig">Pascale Dussin &bull; Coach Activités Santé &amp; Sport &bull; Novotel Anglet-Biarritz</div></div>'
+    +'</div>';
+})();
+</script>
+</body>
+</html>
