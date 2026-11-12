@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Commander un Bon Cadeau â Pascale Dussin</title>
+<title>Commander un Bon Cadeau – Pascale Dussin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap">
 <style>
@@ -11,7 +11,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;padding:0 0 60px;}
 
-/* ââ HEADER ââ */
+/* ── HEADER ── */
 .site-header{background:var(--primary);padding:20px 24px 16px;text-align:center;border-bottom:2px solid var(--gold);}
 .site-header .logo-name{font-family:'Cinzel',serif;color:#fff;font-size:clamp(20px,4vw,30px);letter-spacing:.08em;}
 .site-header .logo-name span{color:var(--gold);}
@@ -21,14 +21,14 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .page-title h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(22px,4vw,34px);letter-spacing:.08em;}
 .page-title p{color:var(--gold2);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px;opacity:.8;}
 
-/* ââ BACK LINK ââ */
+/* ── BACK LINK ── */
 .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold2);font-size:13px;text-decoration:none;padding:12px 24px;opacity:.7;transition:opacity .2s;}
 .back-link:hover{opacity:1;}
 
-/* ââ WRAPPER ââ */
+/* ── WRAPPER ── */
 .wrap{max-width:860px;margin:0 auto;padding:0 16px;}
 
-/* ââ TYPE TABS ââ */
+/* ── TYPE TABS ── */
 .type-tabs{display:flex;gap:0;margin:24px 0 28px;border:2px solid var(--gold);border-radius:10px;overflow:hidden;}
 .tab-btn{flex:1;padding:14px 16px;background:transparent;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:clamp(11px,2vw,15px);letter-spacing:.06em;color:var(--gold2);transition:all .2s;text-align:center;line-height:1.3;}
 .tab-btn .tab-emoji{font-size:18px;display:block;margin-bottom:4px;}
@@ -36,11 +36,11 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .tab-btn:not(.active):hover{background:rgba(201,168,76,.08);}
 .tab-sep{width:2px;background:var(--gold);flex-shrink:0;}
 
-/* ââ SECTION LABEL ââ */
+/* ── SECTION LABEL ── */
 .section-label{font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
 .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--gold),transparent);}
 
-/* ââ FORMULA GRID ââ */
+/* ── FORMULA GRID ── */
 .formula-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
 @media(max-width:560px){.formula-grid{grid-template-columns:1fr;}}
 .formula-card{background:rgba(0,0,0,.35);border:2px solid rgba(201,168,76,.3);border-radius:12px;padding:16px 12px;text-align:center;cursor:pointer;transition:all .22s;position:relative;user-select:none;}
@@ -53,7 +53,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .formula-card .f-price{color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(20px,3.5vw,28px);font-weight:700;margin-top:10px;}
 .formula-card .f-eco{color:#8BC34A;font-size:11px;font-weight:700;margin-top:4px;letter-spacing:.04em;}
 
-/* ââ FORM ââ */
+/* ── FORM ── */
 .form-section{background:rgba(0,0,0,.25);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:20px;margin-bottom:20px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
 @media(max-width:520px){.form-row{grid-template-columns:1fr;}}
@@ -62,19 +62,19 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .field-group label{color:var(--gold);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;}
 .field-group input,.field-group textarea,.field-group select{background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.35);border-radius:6px;color:#fff;padding:10px 12px;font-size:14px;font-family:'Lato',sans-serif;width:100%;outline:none;transition:border .2s;}
 .field-group input:focus,.field-group textarea:focus,.field-group select:focus{border-color:var(--gold);}
-.field-group input::placeholder,.field-group textarea::placeholder{color:rgba(255,255,255,.3);}
+.field-groug input::placeholder,.field-group textarea::placeholder{color:rgba(255,255,255,.3);}
 .field-group textarea{resize:vertical;min-height:70px;}
 .qty-row{display:flex;align-items:center;gap:10px;margin-top:4px;}
 .qty-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gold);background:transparent;color:var(--gold);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .15s;}
 .qty-btn:hover{background:var(--gold);color:#1a1a1a;}
 .qty-val{color:#fff;font-size:16px;font-weight:700;min-width:28px;text-align:center;}
 
-/* ââ ADD BUTTON ââ */
+/* ── ADD BUTTON ── */
 .btn-add{display:block;width:100%;padding:14px;border-radius:8px;border:none;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-family:'Cinzel',serif;font-size:15px;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;margin-top:4px;}
 .btn-add:hover{opacity:.85;}
 .btn-add:disabled{opacity:.4;cursor:not-allowed;}
 
-/* ââ CART ââ */
+/* ── CART ── */
 .cart-section{margin-top:28px;}
 .cart-empty{text-align:center;color:rgba(255,255,255,.3);font-style:italic;padding:24px;border:2px dashed rgba(201,168,76,.2);border-radius:12px;}
 .cart-items{display:flex;flex-direction:column;gap:10px;}
@@ -87,24 +87,24 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .ci-remove{background:transparent;border:1px solid rgba(255,80,80,.5);color:rgba(255,100,100,.8);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:12px;transition:all .15s;white-space:nowrap;}
 .ci-remove:hover{background:rgba(255,0,0,.15);border-color:rgba(255,100,100,.8);}
 
-/* ââ TOTAL BAR ââ */
+/* ── TOTAL BAR ── */
 .total-bar{background:linear-gradient(135deg,rgba(122,40,0,.5),rgba(201,168,76,.1));border:1.5px solid var(--gold);border-radius:12px;padding:16px 20px;margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .total-label{color:var(--gold2);font-family:'Cinzel',serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;}
 .total-amount{color:var(--gold);font-family:'Cinzel',serif;font-size:28px;font-weight:700;}
 .total-nb{color:#aaa;font-size:12px;margin-top:2px;}
 
-/* ââ SEND BUTTON ââ */
+/* ── SEND BUTTON ── */
 .btn-send-wrap{margin-top:20px;text-align:center;}
 .btn-send{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:10px;border:none;background:linear-gradient(135deg,#B07A00,var(--gold),#C9A84C);color:#1a1a1a;font-family:'Cinzel',serif;font-size:16px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 20px rgba(201,168,76,.3);}
 .btn-send:hover{opacity:.85;}
 .btn-send:disabled{opacity:.4;cursor:not-allowed;}
 .send-hint{color:#888;font-size:12px;text-align:center;margin-top:10px;line-height:1.6;}
 
-/* ââ NOTIFICATION ââ */
+/* ── NOTIFICATION ── */
 .notif{display:none;background:linear-gradient(135deg,rgba(0,120,0,.3),rgba(0,180,0,.1));border:1.5px solid #4CAF50;border-radius:10px;padding:14px 20px;margin-top:16px;color:#a5d6a7;font-size:13px;line-height:1.7;}
 .notif.show{display:block;}
 
-/* ââ FOOTER ââ */
+/* ── FOOTER ── */
 .site-footer{background:rgba(0,0,0,.4);border-top:1px solid rgba(201,168,76,.2);text-align:center;padding:16px;margin-top:40px;color:#666;font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
 </style>
 </head>
@@ -112,77 +112,77 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 
 <div class="site-header">
   <div class="logo-name">Pascale <span>Dussin</span></div>
-  <div class="logo-sub">Coaching &amp; ActivitÃ©s SantÃ© Â· Sport</div>
+  <div class="logo-sub">Coaching &amp; Activités Santé · Sport</div>
   <div class="logo-hotel">Novotel Biarritz Anglet</div>
 </div>
 
 <div class="page-title">
-  <h1>ð Commander un Bon Cadeau</h1>
-  <p>IdÃ©e cadeau sportive &amp; bien-Ãªtre Â· NoÃ«l 2026</p>
+  <h1>🎁 Commander un Bon Cadeau</h1>
+  <p>Idée cadeau sportive &amp; bien-être · Noël 2026</p>
 </div>
 
 <div class="wrap">
-  <a class="back-link" href="index.html#sec-cadeau">â Retour</a>
+  <a class="back-link" href="index.html#sec-cadeau">← Retour</a>
 
   <!-- TYPE TABS -->
   <div class="type-tabs">
     <button class="tab-btn" id="tab-coaching" onclick="setType('coaching')">
-      <span class="tab-emoji">ð§</span>
-      Coaching PrivÃ©<br><small style="font-family:Lato;font-size:11px;letter-spacing:.04em;opacity:.8;">Sport Â· Yoga Â· Pilates</small>
+      <span class="tab-emoji">🧘</span>
+      Coaching Privé<br><small style="font-family:Lato;font-size:11px;letter-spacing:.04em;opacity:.8;">Sport · Yoga · Pilates</small>
     </button>
     <div class="tab-sep"></div>
     <button class="tab-btn" id="tab-collectif" onclick="setType('collectif')">
-      <span class="tab-emoji">ð</span>
-      Cours Collectifs<br><small style="font-family:Lato;font-size:11px;letter-spacing:.04em;opacity:.8;">Pilates Â· Cross Training</small>
+      <span class="tab-emoji">🏅</span>
+      Cours Collectifs<br><small style="font-family:Lato;font-size:11px;letter-spacing:.04em;opacity:.8;">Pilates · Cross Training</small>
     </button>
   </div>
 
   <!-- STEP 1 : FORMULE -->
-  <div class="section-label">â  Choisissez une formule</div>
+  <div class="section-label">① Choisissez une formule</div>
   <div class="formula-grid" id="formulaGrid"></div>
 
-  <!-- STEP 2 : COORDONNÃES -->
-  <div class="section-label" style="margin-top:4px;">â¡ Renseignez les destinataires</div>
+  <!-- STEP 2 : COORDONNÉES -->
+  <div class="section-label" style="margin-top:4px;">② Renseignez les destinataires</div>
   <div class="form-section">
     <div class="form-row">
       <div class="field-group">
-        <label>Pour (prÃ©nom du bÃ©nÃ©ficiaire) *</label>
+        <label>Pour (prénom du bénéficiaire) *</label>
         <input type="text" id="fPour" placeholder="ex. Marie" autocomplete="off">
       </div>
-      <div class="field-group">
+      <div class="field-groug">
         <label>De la part de *</label>
-        <input type="text" id="fDe" placeholder="Votre prÃ©nom &amp; nom" autocomplete="off">
+        <input type="text" id="fDe" placeholder="Votre prénom &amp; nom" autocomplete="off">
       </div>
     </div>
     <div class="form-row">
-      <div class="field-group">
+      <div class="field-groug">
         <label>Votre email *</label>
         <input type="email" id="fEmail" placeholder="email@exemple.fr" autocomplete="email">
       </div>
       <div class="field-group">
-        <label>QuantitÃ©</label>
+        <label>Quantité</label>
         <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty(-1)">â</button>
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
           <span class="qty-val" id="qtyVal">1</span>
           <button class="qty-btn" onclick="changeQty(1)">+</button>
-          <span style="color:#888;font-size:12px;">Ã bon(s)</span>
+          <span style="color:#888;font-size:12px;">× bon(s)</span>
         </div>
       </div>
     </div>
     <div class="form-row full">
       <div class="field-group">
         <label>Message personnel (optionnel)</label>
-        <textarea id="fMsg" placeholder="ex. Joyeux NoÃ«l ! Profite bien de tes sÃ©ances ð"></textarea>
+        <textarea id="fMsg" placeholder="ex. Joyeux Noël ! Profite bien de tes séances 🎄"></textarea>
       </div>
     </div>
-    <button class="btn-add" id="btnAdd" onclick="addToCart()">ð Ajouter au panier</button>
+    <button class="btn-add" id="btnAdd" onclick="addToCart()">🛒 Ajouter au panier</button>
   </div>
 
   <!-- PANIER -->
   <div class="cart-section" id="cartSection">
     <div class="section-label" style="justify-content:space-between;align-items:center;">
-      â¢ Votre panier
-      <button id="btnClear" onclick="clearCart()" style="display:none;font-size:11px;background:transparent;border:1px solid rgba(255,80,80,.5);color:rgba(255,100,100,.8);border-radius:5px;padding:4px 10px;cursor:pointer;font-family:inherit;letter-spacing:.04em;">ð Vider</button>
+      ③ Votre panier
+      <button id="btnClear" onclick="clearCart()" style="display:none;font-size:11px;background:transparent;border:1px solid rgba(255,80,80,.5);color:rgba(255,100,100,.8);border-radius:5px;padding:4px 10px;cursor:pointer;font-family:inherit;letter-spacing:.04em;">🗑 Vider</button>
     </div>
     <div id="cartEmpty" class="cart-empty">Votre panier est vide.<br>Choisissez une formule et ajoutez-la ci-dessus.</div>
     <div class="cart-items" id="cartItems" style="display:none;"></div>
@@ -198,50 +198,50 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
   <!-- ENVOI -->
   <div class="btn-send-wrap">
     <button class="btn-send" id="btnSend" onclick="sendOrder()" disabled>
-      âï¸ Envoyer ma commande Ã  Pascale
+      ✉️ Envoyer ma commande à Pascale
     </button>
     <p class="send-hint">
-      Votre commande sera envoyÃ©e directement Ã  Pascale.<br>
+      Votre commande sera envoyée directement à Pascale.<br>
       Elle vous contactera pour le paiement et vous enverra votre bon cadeau.
     </p>
     <div class="notif" id="notif">
-      â <strong>Commande envoyÃ©e !</strong><br>
-      Pascale a bien reÃ§u votre demande. Elle vous recontactera dans les plus brefs dÃ©lais pour le paiement.<br>
-      Une fois le rÃ¨glement effectuÃ©, vous recevrez votre bon cadeau par email, prÃªt Ã  Ãªtre imprimÃ© ou offert.
+      ✅ <strong>Commande envoyée !</strong><br>
+      Pascale a bien reçu votre demande. Elle vous recontactera dans les plus brefs délais pour le paiement.<br>
+      Une fois le règlement effectué, vous recevrez votre bon cadeau par email, prêt à être imprimé ou offert.
     </div>
   </div>
 
 </div><!-- /wrap -->
 
 <div class="site-footer">
-  Pascale Dussin Â· Novotel Biarritz Anglet Â· 68 av d'Espagne 64600 Anglet Â· 02 72 17 49 95
+  Pascale Dussin · Novotel Biarritz Anglet · 68 av d'Espagne 64600 Anglet · 02 72 17 49 95
 </div>
 
 <script>
 (function(){
 
-  /* ââ Catalogue ââ */
+  /* ── Catalogue ── */
   var CATALOG = {
     coaching: {
-      label: 'Coaching PrivÃ©',
-      sub: 'Sport Â· Yoga Â· Pilates',
+      label: 'Coaching Privé',
+      sub: 'Sport · Yoga · Pilates',
       voucher: 'bon-cadeau-coaching.html',
       prefix: 'PD-PRV',
       formules: [
-        {id:'declic',    name:'LE DÃCLIC',    detail:'1 sÃ©ance individuelle<br>de 1h', prix:60,  prixStr:'60 â¬',  eco:''},
-        {id:'boost',     name:'LE BOOST',     detail:'3 sÃ©ances individuelles<br>de 1h',prix:165, prixStr:'165 â¬', eco:'15 â¬ d\'Ã©conomie'},
-        {id:'equilibre', name:'L\'ÃQUILIBRE', detail:'5 sÃ©ances individuelles<br>de 1h',prix:250, prixStr:'250 â¬', eco:'50 â¬ d\'Ã©conomie'}
+        {id:'declic',    name:'LE DÉCLIC',    detail:'1 séance individuelle<br>de 1h', prix:60,  prixStr:'60 €',  eco:''},
+        {id:'boost',     name:'LE BOOST',     detail:'3 séances individuelles<br>de 1h',prix:165, prixStr:'165 €', eco:'15 € d\'économie'},
+        {id:'equilibre', name:'L\'ÉQUILIBRE', detail:'5 séances individuelles<br>de 1h',prix:250, prixStr:'250 €', eco:'50 € d\'économie'}
       ]
     },
     collectif: {
       label: 'Cours Collectifs',
-      sub: 'Pilates Â· Cross Training',
+      sub: 'Pilates · Cross Training',
       voucher: 'bon-cadeau-collectif.html',
       prefix: 'PD-COL',
       formules: [
-        {id:'boost',     name:'LE BOOST',     detail:'5 sÃ©ances',  prix:70,  prixStr:'70 â¬'},
-        {id:'challenge', name:'LE CHALLENGE', detail:'10 sÃ©ances', prix:140, prixStr:'140 â¬'},
-        {id:'power',     name:'LE POWER',     detail:'15 sÃ©ances', prix:210, prixStr:'210 â¬'}
+        {id:'boost',     name:'LE BOOST',     detail:'5 séances',  prix:70,  prixStr:'70 €'},
+        {id:'challenge', name:'LE CHALLENGE', detail:'10 séances', prix:140, prixStr:'140 €'},
+        {id:'power',     name:'LE POWER',     detail:'15 séances', prix:210, prixStr:'210 €'}
       ]
     }
   };
@@ -251,11 +251,11 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
   var qty = 1;
   var cart = []; // {type, pkg, pour, de, email, msg, qty, prix}
 
-  /* ââ Init from URL ââ */
+  /* ── Init from URL ── */
   var urlP = new URLSearchParams(window.location.search);
   if(urlP.get('type') === 'collectif') currentType = 'collectif';
 
-  /* ââ Render formulas ââ */
+  /* ── Render formulas ── */
   function renderFormulas(){
     var grid = document.getElementById('formulaGrid');
     var cat = CATALOG[currentType];
@@ -267,7 +267,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       d.id = 'fc-'+currentType+'-'+f.id;
       d.onclick = function(){ selectFormula(f.id); };
       d.innerHTML =
-        '<div class="sel-badge">â</div>'+
+        '<div class="sel-badge">✓</div>'+
         '<div class="f-name">'+f.name+'</div>'+
         '<div class="f-detail">'+f.detail+'</div>'+
         '<div class="f-price">'+f.prixStr+'</div>'+
@@ -287,7 +287,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     updateAddBtn();
   }
 
-  /* ââ Type switch ââ */
+  /* ── Type switch ── */
   window.setType = function(t){
     currentType = t;
     document.getElementById('tab-coaching').classList.toggle('active', t==='coaching');
@@ -295,13 +295,13 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     renderFormulas();
   };
 
-  /* ââ Qty ââ */
+  /* ── Qty ── */
   window.changeQty = function(d){
     qty = Math.max(1, Math.min(20, qty+d));
     document.getElementById('qtyVal').textContent = qty;
   };
 
-  /* ââ Add to cart ââ */
+  /* ── Add to cart ── */
   window.addToCart = function(){
     var pour  = document.getElementById('fPour').value.trim();
     var de    = document.getElementById('fDe').value.trim();
@@ -309,7 +309,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     var msg   = document.getElementById('fMsg').value.trim();
 
     if(!selectedPkg){ alert('Veuillez une formule.'); return; }
-    if(!pour){ alert('Veuillez indiquer le prÃ©nom du bÃ©nÃ©ficiaire.'); return; }
+    if(!pour){ alert('Veuillez indiquer le prénom du bénéficiaire.'); return; }
     if(!de)  { alert('Veuillez indiquer votre nom.'); return; }
     if(!email || !email.includes('@')){ alert('Veuillez indiquer une adresse email valide.'); return; }
 
@@ -341,16 +341,16 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     renderFormulas();
   };
 
-  /* ââ Clear cart ââ */
+  /* ── Clear cart ── */
   window.clearCart = function(){ cart=[]; renderCart(); };
 
-  /* ââ Remove from cart ââ */
+  /* ── Remove from cart ── */
   window.removeFromCart = function(i){
     cart.splice(i,1);
     renderCart();
   };
 
-  /* ââ Render cart ââ */
+  /* ── Render cart ── */
   function renderCart(){
     var empty = document.getElementById('cartEmpty');
     var items = document.getElementById('cartItems');
@@ -386,30 +386,30 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       d.innerHTML =
         '<div class="ci-badge">'+item.typeLabel+'</div>'+
         '<div class="ci-info">'+
-          '<div class="ci-name">'+item.pkgName+' â '+item.prixStr+
-            (item.qty>1 ? ' Ã '+item.qty : '')+'</div>'+
+          '<div class="ci-name">'+item.pkgName+' — '+item.prixStr+
+            (item.qty>1 ? ' × '+item.qty : '')+'</div>'+
           '<div class="ci-meta">Pour <strong style="color:#ddd">'+item.pour+'</strong>'+
-            ' Â· De : '+item.de+
-            (item.msg ? ' Â· "'+item.msg+'"' : '')+
+            ' · De : '+item.de+
+            (item.msg ? ' · "'+item.msg+'"' : '')+
           '</div>'+
           '<div class="ci-meta" style="color:#666">'+item.email+'</div>'+
         '</div>'+
-        '<div class="ci-price">'+(item.qty>1 ? subtotal+' â¬' : item.prixStr)+'</div>'+
-        '<button class="ci-remove" onclick="removeFromCart('+i+')">â Supprimer</button>';
+        '<div class="ci-price">'+(item.qty>1 ? subtotal+' €' : item.prixStr)+'</div>'+
+        '<button class="ci-remove" onclick="removeFromCart('+i+')">✕ Supprimer</button>';
       items.appendChild(d);
     });
 
     var nbLabel = totalQty + ' bon'+(totalQty>1?'s':'');
     document.getElementById('totalNb').textContent = nbLabel;
-    document.getElementById('totalAmount').textContent = total + ' â¬';
+    document.getElementById('totalAmount').textContent = total + ' €';
   }
 
-  /* ââ Update add button ââ */
+  /* ── Update add button ── */
   function updateAddBtn(){
     document.getElementById('btnAdd').disabled = !selectedPkg;
   }
 
-  /* ââ Send order ââ */
+  /* ── Send order ── */
   window.sendOrder = function(){
     if(cart.length===0){ alert('Votre panier est vide.'); return; }
 
@@ -421,34 +421,34 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     var dateStr = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
     var base = 'https://novotelbiarritz.github.io/PASCALE-DUSSIN-ACTIVITES-SANTE-ET-SPORT/';
 
-    /* ââ Envoi rÃ©el via FormSubmit.co ââ */
+    /* ── Envoi réel via FormSubmit.co ── */
     var btnSend = document.getElementById('btnSend');
     btnSend.disabled = true;
-    btnSend.textContent = 'â³ Envoi en coursâ¦';
+    btnSend.textContent = '⏳ Envoi en cours…';
 
     var formData = new FormData();
-    formData.append('_subject', 'ð Commande Bon Cadeau Pascale Dussin â ' + dateStr);
+    formData.append('_subject', '🎁 Commande Bon Cadeau Pascale Dussin – ' + dateStr);
     formData.append('_replyto', emailTo);
     formData.append('_cc', emailTo);
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
 
-    /* ââ RÃ©sumÃ© global ââ */
+    /* ── Résumé global ── */
     formData.append('Date de commande', dateStr);
-    formData.append('CommandÃ© par', cart[0].de + ' (' + emailTo + ')');
+    formData.append('Commandé par', cart[0].de + ' (' + emailTo + ')');
 
-    /* ââ DÃ©tail par bon cadeau ââ */
+    /* ── Détail par bon cadeau ── */
     cart.forEach(function(item, i){
       var n = i + 1;
-      var prefix = cart.length > 1 ? 'Bon ' + n + ' â ' : '';
+      var prefix = cart.length > 1 ? 'Bon ' + n + ' — ' : '';
       var vp = item.type === 'coaching' ? 'bon-cadeau-coaching.html' : 'bon-cadeau-collectif.html';
       var vNum = (item.type === 'coaching' ? 'PD-PRV' : 'PD-COL') + '-' + new Date().getFullYear() + '-' + String(Date.now()).slice(-4) + '-' + (i + 1);
       var vUrl = base + vp + '?num=' + encodeURIComponent(vNum) + '&dest=' + encodeURIComponent(item.pour) + '&de=' + encodeURIComponent(item.de) + '&pkg=' + encodeURIComponent(item.pkg) + '&email=' + encodeURIComponent(item.email) + (item.msg ? '&msg=' + encodeURIComponent(item.msg) : '');
 
       formData.append(prefix + 'Type', item.typeLabel);
       formData.append(prefix + 'Formule', item.pkgName + ' (' + item.prixStr + ')');
-      formData.append(prefix + 'DÃ©tail', item.detail);
-      if(item.qty > 1) formData.append(prefix + 'QuantitÃ©', item.qty + ' (sous-total : ' + (item.prixNum * item.qty) + ' â¬)');
+      formData.append(prefix + 'Détail', item.detail);
+      if(item.qty > 1) formData.append(prefix + 'Quantité', item.qty + ' (sous-total : ' + (item.prixNum * item.qty) + ' €)');
       formData.append(prefix + 'Pour', item.pour);
       formData.append(prefix + 'De la part de', item.de);
       formData.append(prefix + 'Email', item.email);
@@ -456,7 +456,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       formData.append(prefix + 'Lien bon cadeau', vUrl);
     });
 
-    formData.append('TOTAL', total + ' â¬ (' + totalQty + ' bon' + (totalQty > 1 ? 's' : '') + ')');
+    formData.append('TOTAL', total + ' € (' + totalQty + ' bon' + (totalQty > 1 ? 's' : '') + ')');
 
     fetch('https://formsubmit.co/ajax/8f5597dc5a2d3a0a7d48199f7d5f1984', {
       method: 'POST',
@@ -467,21 +467,21 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     .then(function(data){
       if(data.success){
         document.getElementById('notif').classList.add('show');
-        btnSend.textContent = 'â Commande envoyÃ©e';
+        btnSend.textContent = '✅ Commande envoyée';
       } else {
         btnSend.disabled = false;
-        btnSend.textContent = 'ð§ Envoyer la commande';
-        alert('Erreur lors de l\'envoi : ' + (data.message || 'Veuillez rÃ©essayer.'));
+        btnSend.textContent = '📧 Envoyer la commande';
+        alert('Erreur lors de l\'envoi : ' + (data.message || 'Veuillez réessayer.'));
       }
     })
     .catch(function(){
       btnSend.disabled = false;
-      btnSend.textContent = 'ð§ Envoyer la commande';
-      alert('Erreur rÃ©seau. VÃ©rifiez votre connexion et rÃ©essayez.');
+      btnSend.textContent = '📧 Envoyer la commande';
+      alert('Erreur réseau. Vérifiez votre connexion et réessayez.');
     });
   };
 
-  /* ââ Init ââ */
+  /* ── Init ── */
   renderFormulas();
   document.getElementById('tab-coaching').classList.toggle('active', currentType==='coaching');
   document.getElementById('tab-collectif').classList.toggle('active', currentType==='collectif');
