@@ -797,7 +797,7 @@ function updateClientTypeUI(){
 }
 
 function goStep(id){
-  document.getElementById('main-view').style.display='none';
+  document.getElementById('main-view').style.display='block';
   var steps=document.querySelectorAll('.step');
   for(var i=0;i<steps.length;i++)steps[i].classList.remove('on');
   el(id).classList.add('on');
@@ -866,7 +866,7 @@ function checkPin(){
   var code=el('pin-input').value;
   if(code===PIN_PASCALE||code===PIN_DIR_PASCALE){
     closePin();
-    document.getElementById('main-view').style.display='none';
+    document.getElementById('main-view').style.display='block';
     var steps=document.querySelectorAll('.step');
     for(var i=0;i<steps.length;i++)steps[i].classList.remove('on');
     el('admin-wrap').classList.add('on');
