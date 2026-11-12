@@ -62,7 +62,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .field-group label{color:var(--gold);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;}
 .field-group input,.field-group textarea,.field-group select{background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.35);border-radius:6px;color:#fff;padding:10px 12px;font-size:14px;font-family:'Lato',sans-serif;width:100%;outline:none;transition:border .2s;}
 .field-group input:focus,.field-group textarea:focus,.field-group select:focus{border-color:var(--gold);}
-.field-groug input::placeholder,.field-group textarea::placeholder{color:rgba(255,255,255,.3);}
+.field-group input::placeholder,.field-group textarea::placeholder{color:rgba(255,255,255,.3);}
 .field-group textarea{resize:vertical;min-height:70px;}
 .qty-row{display:flex;align-items:center;gap:10px;margin-top:4px;}
 .qty-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gold);background:transparent;color:var(--gold);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .15s;}
@@ -118,7 +118,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 
 <div class="page-title">
   <h1>🎁 Commander un Bon Cadeau</h1>
-  <p>Idée cadeau sportive &amp; bien-être · Noël 2026</p>
+  <p>Idée cadeau sportive &amp; bien-être · Noël 20268/p>
 </div>
 
 <div class="wrap">
@@ -149,16 +149,22 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
         <label>Pour (prénom du bénéficiaire) *</label>
         <input type="text" id="fPour" placeholder="ex. Marie" autocomplete="off">
       </div>
-      <div class="field-groug">
+      <div class="field-group">
         <label>De la part de *</label>
         <input type="text" id="fDe" placeholder="Votre prénom &amp; nom" autocomplete="off">
       </div>
     </div>
     <div class="form-row">
-      <div class="field-groug">
+      <div class="field-group">
         <label>Votre email *</label>
         <input type="email" id="fEmail" placeholder="email@exemple.fr" autocomplete="email">
       </div>
+      <div class="field-group">
+        <label>Votre portable *</label>
+        <input type="tel" id="fTel" placeholder="ex. 06 12 34 56 78" autocomplete="tel">
+      </div>
+    </div>
+    <div class="form-row">
       <div class="field-group">
         <label>Quantité</label>
         <div class="qty-row">
@@ -166,6 +172,12 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
           <span class="qty-val" id="qtyVal">1</span>
           <button class="qty-btn" onclick="changeQty(1)">+</button>
           <span style="color:#888;font-size:12px;">× bon(s)</span>
+        </div>
+      </div>
+      <div class="field-group" style="justify-content:flex-end;">
+        <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--gold2);line-height:1.6;">
+          📞 Pascale vous rappellera au<br>
+          <strong style="font-size:15px;letter-spacing:.05em;">06 72 17 49 95</strong>
         </div>
       </div>
     </div>
@@ -198,16 +210,20 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
   <!-- ENVOI -->
   <div class="btn-send-wrap">
     <button class="btn-send" id="btnSend" onclick="sendOrder()" disabled>
-      ✉️ Envoyer ma commande à Pascale
+      �	️ Envoyer ma demande à Pascale
     </button>
     <p class="send-hint">
-      Votre commande sera envoyée directement à Pascale.<br>
-      Elle vous contactera pour le paiement et vous enverra votre bon cadeau.
+      Votre demande sera transmise à Pascale.<br>
+      <strong style="font-size:14px;color:var(--gold2);">Pour finaliser votre achat, appelez Pascale au</strong><br>
+      <strong style="font-size:16px;color:var(--gold);">📞 06 72 17 49 95</strong><br>
+      <span style="color:#999;">ou elle vous rappellera pour convenir du règlement.</span><br>
+      <span style="color:#bbb;font-size:11px;">✦ Une fois le paiement validé, Pascale vous enverra votre bon cadeau par email, prêt à offrir.</span>
     </p>
     <div class="notif" id="notif">
-      ✅ <strong>Commande envoyée !</strong><br>
-      Pascale a bien reçu votre demande. Elle vous recontactera dans les plus brefs délais pour le paiement.<br>
-      Une fois le règlement effectué, vous recevrez votre bon cadeau par email, prêt à être imprimé ou offert.
+      ✅ <strong>Demande envoyée à Pascale !</strong><br>
+      📞 <strong>Pour finaliser votre achat, appelez Pascale au 06 72 17 49 95</strong><br>
+      ou elle vous rappellera pour le règlement.<br>
+      <span style="font-size:12px;opacity:.85;">✦ Une fois le paiement validé, elle vous enverra votre bon cadeau par email, prêt à offrir.</span>
     </div>
   </div>
 
@@ -306,12 +322,14 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     var pour  = document.getElementById('fPour').value.trim();
     var de    = document.getElementById('fDe').value.trim();
     var email = document.getElementById('fEmail').value.trim();
+    var tel   = document.getElementById('fTel').value.trim();
     var msg   = document.getElementById('fMsg').value.trim();
 
     if(!selectedPkg){ alert('Veuillez une formule.'); return; }
     if(!pour){ alert('Veuillez indiquer le prénom du bénéficiaire.'); return; }
     if(!de)  { alert('Veuillez indiquer votre nom.'); return; }
     if(!email || !email.includes('@')){ alert('Veuillez indiquer une adresse email valide.'); return; }
+    if(!tel){ alert('Veuillez indiquer votre numéro de portable.'); return; }
 
     var cat = CATALOG[currentType];
     var f   = cat.formules.find(function(x){ return x.id===selectedPkg; });
@@ -327,6 +345,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       pour:    pour,
       de:      de,
       email:   email,
+      tel:     tel,
       msg:     msg,
       qty:     qty
     });
@@ -334,6 +353,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     renderCart();
     /* reset form */
     document.getElementById('fPour').value  = '';
+    document.getElementById('fTel').value   = '';
     document.getElementById('fMsg').value   = '';
     qty = 1;
     document.getElementById('qtyVal').textContent = '1';
@@ -388,11 +408,11 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
         '<div class="ci-info">'+
           '<div class="ci-name">'+item.pkgName+' — '+item.prixStr+
             (item.qty>1 ? ' × '+item.qty : '')+'</div>'+
-          '<div class="ci-meta">Pour <strong style="color:#ddd">'+item.pour+'</strong>'+
-            ' · De : '+item.de+
+          '<div class="ci-meta">Pour <strong style="color:#f0e8c8">'+item.pour+'</strong>'+
+            ' · De : <strong style="color:#e8e8e8">'+item.de+'</strong>'+
             (item.msg ? ' · "'+item.msg+'"' : '')+
           '</div>'+
-          '<div class="ci-meta" style="color:#666">'+item.email+'</div>'+
+          '<div class="ci-meta" style="color:#bbb">'+item.email+' · 📱 '+item.tel+'</div>'+
         '</div>'+
         '<div class="ci-price">'+(item.qty>1 ? subtotal+' €' : item.prixStr)+'</div>'+
         '<button class="ci-remove" onclick="removeFromCart('+i+')">✕ Supprimer</button>';
@@ -427,7 +447,7 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     btnSend.textContent = '⏳ Envoi en cours…';
 
     var formData = new FormData();
-    formData.append('_subject', '🎁 Commande Bon Cadeau Pascale Dussin – ' + dateStr);
+    formData.append('_subject', '🎁 Demande de Bon Cadeau – Pascale Dussin – ' + dateStr);
     formData.append('_replyto', emailTo);
     formData.append('_cc', emailTo);
     formData.append('_template', 'table');
@@ -452,8 +472,9 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
       formData.append(prefix + 'Pour', item.pour);
       formData.append(prefix + 'De la part de', item.de);
       formData.append(prefix + 'Email', item.email);
+      formData.append(prefix + 'Portable client', item.tel);
       if(item.msg) formData.append(prefix + 'Message', '"' + item.msg + '"');
-      formData.append(prefix + 'Lien bon cadeau', vUrl);
+      formData.append(prefix + '→ Lien à envoyer au client après paiement', vUrl);
     });
 
     formData.append('TOTAL', total + ' € (' + totalQty + ' bon' + (totalQty > 1 ? 's' : '') + ')');
