@@ -3,41 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Bon Cadeau O’SPA · Novotel Biarritz Anglet</title>
+<title>Bon Cadeau O'SPA · Novotel Biarritz Anglet</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#C9A84C;--gold2:#E8C97E;--teal:#4a9e9e;--teal2:#7dc8c8;--bg:#0d0f0f;--card:#0f1515;--text:#f0f0f0;--sub:#aaa;--border:rgba(74,158,158,.3);--radius:16px;}*{box-sizing:border-box;margin:0;padding:0;}body{background:var(--bg);color:var(--text);font-family:"Lato",sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px 16px 48px;}.actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;width:100%;max-width:580px;}.btn{padding:10px 22px;border:none;border-radius:40px;font-family:"Lato",sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;letter-spacing:.04em;transition:opacity .2s;}.btn:hover{opacity:.85;}.btn-dl{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#111;}.notice{font-size:.78rem;color:#666;text-align:center;margin-bottom:24px;max-width:580px;line-height:1.6;}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:580px;overflow:hidden;}.card-header{background:linear-gradient(160deg,#061515 0%,#0d2a2a 60%,#111 100%);padding:28px 24px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}.logo-block{flex:1;text-align:center;}.logo-name{font-family:"Cinzel",serif;color:var(--teal2);font-size:clamp(28px,8vw,46px);font-weight:900;letter-spacing:.12em;line-height:1;text-shadow:0 0 40px rgba(74,158,158,.5);}.logo-apos{color:var(--gold);}.logo-sub{color:#fff;font-size:clamp(11px,2.2vw,14px);font-weight:300;margin-top:6px;letter-spacing:.08em;}.logo-hotel{color:var(--gold2);font-size:clamp(9px,1.5vw,11px);letter-spacing:.14em;text-transform:uppercase;margin-top:4px;opacity:.8;}.num-block{font-size:.7rem;text-align:right;color:var(--sub);letter-spacing:.08em;min-width:80px;}.num-block strong{display:block;font-size:.85rem;color:var(--teal2);margin-top:3px;}.sep{height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--teal2),var(--teal),transparent);}.card-gift{padding:24px 24px 0;text-align:center;}.card-gift-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal2);font-weight:700;margin-bottom:8px;}.card-gift-title{font-family:"Cinzel",serif;font-size:clamp(18px,4.5vw,28px);font-weight:700;color:#fff;letter-spacing:.04em;line-height:1.2;}.recipient-block{margin:20px 20px 0;background:rgba(74,158,158,.06);border:1px solid var(--border);border-radius:10px;padding:16px 20px;}.recipient-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(74,158,158,.12);}.recipient-row:last-child{border-bottom:none;}.recipient-label{color:var(--sub);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;min-width:80px;padding-top:1px;}.recipient-val{color:#fff;font-size:.95rem;font-weight:400;line-height:1.4;}.recipient-val.name{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--teal2);font-weight:700;}.msg-block{margin:16px 20px 0;background:rgba(255,255,255,.03);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:14px 18px;font-style:italic;color:#ccc;font-size:.9rem;line-height:1.6;}.info-section{margin:20px 20px 0;text-align:center;color:var(--sub);font-size:.8rem;line-height:1.6;}.info-section strong{color:var(--teal2);}.card-footer{margin-top:20px;background:rgba(74,158,158,.05);border-top:1px solid var(--border);padding:18px 24px;text-align:center;}.footer-cta{font-size:.82rem;color:var(--sub);line-height:1.7;}.footer-tel{font-size:1.1rem;font-weight:700;color:var(--teal2);letter-spacing:.05em;margin-top:4px;}.footer-sig{font-size:.72rem;color:#555;margin-top:8px;letter-spacing:.08em;text-transform:uppercase;}@media print{body{background:#fff;padding:0;}.actions,.notice{display:none;}.card{border:none;max-width:100%;border-radius:0;}.card-header{background:#0d2a2a !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+:root{--gold:#C9A84C;--gold2:#E8C97E;--teal:#4a9e9e;--teal2:#7dc8c8;--bg:#0d0f0f;--card:#0f1515;--text:#f0f0f0;--sub:#aaa;--border:rgba(74,158,158,.3);--radius:16px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Lato',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px 16px 48px;}
+.actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;width:100%;max-width:580px;}
+.btn{padding:10px 22px;border:none;border-radius:40px;font-family:'Lato',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;letter-spacing:.04em;transition:opacity .2s;}
+.btn:hover{opacity:.85;}
+.btn-dl{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#111;}
+.notice{font-size:.78rem;color:#666;text-align:center;margin-bottom:24px;max-width:580px;line-height:1.6;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:580px;overflow:hidden;}
+.card-header{background:linear-gradient(160deg,#061515 0%,#0d2a2a 60%,#111 100%);padding:28px 24px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.logo-block{flex:1;text-align:center;}
+.logo-name{font-family:'Cinzel',serif;color:var(--teal2);font-size:clamp(28px,8vw,46px);font-weight:900;letter-spacing:.12em;line-height:1;text-shadow:0 0 40px rgba(74,158,158,.5);}
+.logo-apos{color:var(--gold);}
+.logo-sub{color:#fff;font-size:clamp(11px,2.2vw,14px);font-weight:300;margin-top:6px;letter-spacing:.08em;}
+.logo-hotel{color:var(--gold2);font-size:clamp(9px,1.5vw,11px);letter-spacing:.14em;text-transform:uppercase;margin-top:4px;opacity:.8;}
+.num-block{font-size:.7rem;text-align:right;color:var(--sub);letter-spacing:.08em;min-width:80px;}
+.num-block strong{display:block;font-size:.85rem;color:var(--teal2);margin-top:3px;}
+.sep{height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--teal2),var(--teal),transparent);}
+.card-gift{padding:24px 24px 0;text-align:center;}
+.card-gift-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal2);font-weight:700;margin-bottom:8px;}
+.card-gift-title{font-family:'Cinzel',serif;font-size:clamp(18px,4.5vw,28px);font-weight:700;color:#fff;letter-spacing:.04em;line-height:1.2;}
+.recipient-block{margin:20px 20px 0;background:rgba(74,158,158,.06);border:1px solid var(--border);border-radius:10px;padding:16px 20px;}
+.recipient-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(74,158,158,.12);}
+.recipient-row:last-child{border-bottom:none;}
+.recipient-label{color:var(--sub);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;min-width:80px;padding-top:1px;}
+.recipient-val{color:#fff;font-size:.95rem;font-weight:400;line-height:1.4;}
+.recipient-val.name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--teal2);font-weight:700;}
+.msg-block{margin:16px 20px 0;background:rgba(255,255,255,.03);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:14px 18px;font-style:italic;color:#ccc;font-size:.9rem;line-height:1.6;}
+.info-section{margin:20px 20px 0;text-align:center;color:var(--sub);font-size:.8rem;line-height:1.6;}
+.info-section strong{color:var(--teal2);}
+.card-footer{margin-top:20px;background:rgba(74,158,158,.05);border-top:1px solid var(--border);padding:18px 24px;text-align:center;}
+.footer-cta{font-size:.82rem;color:var(--sub);line-height:1.7;}
+.footer-tel{font-size:1.1rem;font-weight:700;color:var(--teal2);letter-spacing:.05em;margin-top:4px;}
+.footer-sig{font-size:.72rem;color:#555;margin-top:8px;letter-spacing:.08em;text-transform:uppercase;}
+@media print{body{background:#fff;padding:0;}.actions,.notice{display:none;}.card{border:none;max-width:100%;border-radius:0;}.card-header{background:#0d2a2a !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
 </style>
 </head>
 <body>
-<div class="actions"><button class="btn btn-dl" onclick="window.print()">&#11015;&#65039; Télécharger / Imprimer</button></div>
-<p class="notice">Ce bon cadeau est personnel et non cessible.<br>Sa durée de validité est d’un an à compter de la date d’achat.</p>
+<div class="actions"><button class="btn btn-dl" onclick="window.print()">&#11015;&#65039; T&eacute;l&eacute;charger / Imprimer</button></div>
+<p class="notice">Ce bon cadeau est personnel et non cessible.<br>Sa dur&eacute;e de validit&eacute; est d&apos;un an &agrave; compter de la date d&apos;achat.</p>
 <div id="app"></div>
 <script>
 (function(){
 var p=new URLSearchParams(window.location.search);
-var num=p.get("num")||"";var dest=p.get("dest")||"";
-var de=p.get("de")||"";var pkg=p.get("pkg")||"";var msg=p.get("msg")||"";
+var num=p.get("num")||"";
+var dest=p.get("dest")||"";
+var de=p.get("de")||"";
+var pkg=p.get("pkg")||"";
+var msg=p.get("msg")||"";
 var app=document.getElementById("app");
-var numHtml=num?"<div class=\"num-block\">Bon Cadeau<strong>N° "+num+"</strong></div>":"<div class=\"num-block\"></div>";
-var giftTitle=pkg?"<div class=\"card-gift\"><div class=\"card-gift-label\">Soin offert</div><div class=\"card-gift-title\">"+pkg+"</div></div>":"";
-var destRow=dest?"<div class=\"recipient-row\"><span class=\"recipient-label\">Offert à</span><span class=\"recipient-val name\">"+dest+"</span></div>":"";
-var deRow=de?"<div class=\"recipient-row\"><span class=\"recipient-label\">Offert par</span><span class=\"recipient-val\">"+de+"</span></div>":"";
-var recHtml=(destRow||deRow)?"<div class=\"recipient-block\">"+destRow+deRow+"</div>":"";
-var msgHtml=msg?"<div class=\"msg-block\">“"+msg+"”</div>":"";
-app.innerHTML="<div class=\"card\">"
-+"<div class=\"card-header\"><div class=\"logo-block\">
-<div class=\"logo-name\"><span class=\"logo-apos\">O’</span>SPA</div>
-<div class=\"logo-sub\">Institut de Beauté &amp; Bien-être</div>
-<div class=\"logo-hotel\">Novotel Biarritz Anglet</div>
-</div>"+numHtml+"</div>"
-+"<div class=\"sep\"></div>"
-+giftTitle+recHtml+msgHtml
-+"<div class=\"info-section\">Valable <strong>1 an</strong> à compter de la date d'achat.<br>Non remboursable &bull; Non cessible.</div>"
-+"<div class=\"card-footer\"><div class=\"footer-cta\">Pour réserver votre soin, contactez Pascale :</div>
-<div class=\"footer-tel\">06 72 17 49 95</div>
-<div class=\"footer-sig\">O’SPA Institut &bull; Novotel Anglet-Biarritz</div></div>"
-+"</div>";
+var numHtml=num ? "<div class=\"num-block\">Bon Cadeau<strong>N° "+num+"</strong></div>" : "<div class=\"num-block\"></div>";
+var giftHtml=pkg ? "<div class=\"card-gift\"><div class=\"card-gift-label\">Soin offert</div><div class=\"card-gift-title\">"+pkg+"</div></div>" : "";
+var destRow=dest ? "<div class=\"recipient-row\"><span class=\"recipient-label\">Offert à</span><span class=\"recipient-val name\">"+dest+"</span></div>" : "";
+var deRow=de ? "<div class=\"recipient-row\"><span class=\"recipient-label\">Offert par</span><span class=\"recipient-val\">"+de+"</span></div>" : "";
+var recHtml=(destRow||deRow) ? "<div class=\"recipient-block\">"+destRow+deRow+"</div>" : "";
+var msgHtml=msg ? "<div class=\"msg-block\">“"+msg+"”</div>" : "";
+var hdr="<div class=\"card-header\">"
+  +"<div class=\"logo-block\">"
+  +"<div class=\"logo-name\"><span class=\"logo-apos\">O’</span>SPA</div>"
+  +"<div class=\"logo-sub\">Institut de Beauté &amp; Bien-être</div>"
+  +"<div class=\"logo-hotel\">Novotel Biarritz Anglet</div>"
+  +"</div>"
+  +numHtml
+  +"</div>";
+var ftr="<div class=\"card-footer\">"
+  +"<div class=\"footer-cta\">Pour réserver votre soin, contactez Pascale :</div>"
+  +"<div class=\"footer-tel\">06 72 17 49 95</div>"
+  +"<div class=\"footer-sig\">O’SPA Institut &bull; Novotel Anglet-Biarritz</div>"
+  +"</div>";
+var info="<div class=\"info-section\">Valable <strong>1 an</strong> à compter de la date d’achat.<br>Non remboursable &bull; Non cessible.</div>";
+app.innerHTML="<div class=\"card\">"+hdr+"<div class=\"sep\"></div>"+giftHtml+recHtml+msgHtml+info+ftr+"</div>";
 })();
 </script>
 </body>
