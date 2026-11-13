@@ -446,35 +446,13 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     btnSend.disabled = true;
     btnSend.textContent = '⏳ Envoi en cours…';
 
-    var formData = new FormData();
-    formData.append('_subject', '🎁 Demande de Bon Cadeau – Pascale Dussin – ' + dateStr);
-    formData.append('_replyto', emailTo);
-    formData.append('_cc', emailTo);
-    formData.append('_template', 'table');
-    formData.append('_captcha', 'false');
-
-    /* ── Résumé global ── */
-    formData.append('Date de commande', dateStr);
-    formData.append('Commandé par', cart[0].de + ' (' + emailTo + ')');
-
-    /* ── Détail par bon cadeau ── */
+    /* ── Construction de l'email HTML ── */
+    var itemsHtml = '';
     cart.forEach(function(item, i){
       var n = i + 1;
-      var prefix = cart.length > 1 ? 'Bon ' + n + ' — ' : '';
       var vp = item.type === 'coaching' ? 'bon-cadeau-coaching.html' : 'bon-cadeau-collectif.html';
       var vNum = (item.type === 'coaching' ? 'PD-PRV' : 'PD-COL') + '-' + new Date().getFullYear() + '-' + String(Date.now()).slice(-4) + '-' + (i + 1);
       var vUrl = base + vp + '?num=' + encodeURIComponent(vNum) + '&dest=' + encodeURIComponent(item.pour) + '&de=' + encodeURIComponent(item.de) + '&pkg=' + encodeURIComponent(item.pkgName || item.pkg) + '&email=' + encodeURIComponent(item.email) + (item.msg ? '&msg=' + encodeURIComponent(item.msg) : '');
-
-      formData.append(prefix + 'Type', item.typeLabel);
-      formData.append(prefix + 'Formule', item.pkgName + ' (' + item.prixStr + ')');
-      formData.append(prefix + 'Détail', item.detail);
-      if(item.qty > 1) formData.append(prefix + 'Quantité', item.qty + ' (sous-total : ' + (item.prixNum * item.qty) + ' €)');
-      formData.append(prefix + 'Pour', item.pour);
-      formData.append(prefix + 'De la part de', item.de);
-      formData.append(prefix + 'Email', item.email);
-      formData.append(prefix + 'Portable client', item.tel);
-      if(item.msg) formData.append(prefix + 'Message', '"' + item.msg + '"');
-      formData.append(prefix + '→ Lien à envoyer au client après paiement', vUrl);
       var confirmUrl = base + 'confirmer-bon.html?to=' + encodeURIComponent(item.email)
         + '&pour=' + encodeURIComponent(item.pour)
         + '&de='   + encodeURIComponent(item.de)
@@ -483,19 +461,59 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
         + '&pkg='  + encodeURIComponent(item.pkgName || item.pkg)
         + '&mt='   + encodeURIComponent(item.prixNum * item.qty)
         + '&num='  + encodeURIComponent(vNum);
-      formData.append(prefix + '✉️ CLIQUER ICI après paiement pour envoyer le bon', confirmUrl);
-            var confirmUrl = base + 'confirmer-bon.html?to=' + encodeURIComponent(item.email)
-              + '&pour=' + encodeURIComponent(item.pour)
-              + '&de='   + encodeURIComponent(item.de)
-              + '&tel='  + encodeURIComponent(item.tel)
-              + '&url='  + encodeURIComponent(vUrl)
-              + '&pkg='  + encodeURIComponent(item.pkgName)
-              + '&mt='   + encodeURIComponent(item.prixNum * item.qty)
-              + '&num='  + encodeURIComponent(vNum);
-            formData.append(prefix + '✉️ CLIQUER ICI après paiement pour envoyer le bon', confirmUrl);
+
+      var bonTitle = cart.length > 1 ? '<h3 style="margin:0 0 10px 0;color:#7A2800;font-size:15px;border-bottom:2px solid #C9A84C;padding-bottom:6px;">BON ' + n + '</h3>' : '';
+      var rows = '';
+      var rowStyle = 'border-bottom:1px solid #eee;';
+      var labelStyle = 'padding:7px 10px;font-weight:bold;color:#555;white-space:nowrap;width:40%;vertical-align:top;font-size:13px;';
+      var valueStyle = 'padding:7px 10px;color:#222;width:60%;vertical-align:top;font-size:13px;word-break:break-word;';
+      function row(label, value){ return '<tr style="' + rowStyle + '"><td style="' + labelStyle + '">' + label + '</td><td style="' + valueStyle + '">' + value + '</td></tr>'; }
+      rows += row('Type', item.typeLabel);
+      rows += row('Formule', item.pkgName + '<br><strong style="color:#7A2800">' + item.prixStr + '</strong>');
+      rows += row('Détail', item.detail);
+      if(item.qty > 1) rows += row('Quantité', item.qty + ' &nbsp;(sous-total : <strong>' + (item.prixNum * item.qty) + ' €</strong>)');
+      rows += row('Pour', '<strong>' + item.pour + '</strong>');
+      rows += row('De la part de', item.de);
+      rows += row('Email', '<a href="mailto:' + item.email + '" style="color:#7A2800">' + item.email + '</a>');
+      rows += row('Portable', item.tel);
+      if(item.msg) rows += row('Message', '<em>"' + item.msg + '"</em>');
+      rows += row('Lien bon cadeau', '<a href="' + vUrl + '" style="color:#7A2800;word-break:break-all;font-size:12px">' + vUrl + '</a>');
+
+      itemsHtml += '<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:16px;margin-bottom:16px;">'
+        + bonTitle
+        + '<table style="width:100%;border-collapse:collapse;">' + rows + '</table>'
+        + '<div style="margin-top:14px;text-align:center;">'
+        + '<a href="' + confirmUrl + '" style="display:inline-block;background:#C9A84C;color:#fff;text-decoration:none;padding:12px 24px;border-radius:5px;font-weight:bold;font-size:14px;">📨 Envoyer le bon cadeau au client</a>'
+        + '</div>'
+        + '</div>';
     });
 
-    formData.append('TOTAL', total + ' € (' + totalQty + ' bon' + (totalQty > 1 ? 's' : '') + ')');
+    var htmlBody = '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f5f0eb;font-family:Arial,sans-serif;">'
+      + '<div style="max-width:600px;margin:0 auto;background:#f5f0eb;">'
+      + '<div style="background:#7A2800;padding:20px 24px;text-align:center;">'
+      + '<p style="margin:0;color:#C9A84C;font-size:20px;font-weight:bold;">🎁 Demande de Bon Cadeau</p>'
+      + '<p style="margin:6px 0 0;color:#f0e8c8;font-size:13px;">Pascale Dussin · Novotel Biarritz Anglet</p>'
+      + '</div>'
+      + '<div style="background:#fff;padding:12px 24px;border-bottom:2px solid #C9A84C;">'
+      + '<table style="width:100%;border-collapse:collapse;">'
+      + '<tr><td style="padding:5px 0;color:#555;font-size:13px;font-weight:bold;white-space:nowrap;width:40%;">📅 Date</td><td style="padding:5px 0;color:#222;font-size:13px;">' + dateStr + '</td></tr>'
+      + '<tr><td style="padding:5px 0;color:#555;font-size:13px;font-weight:bold;white-space:nowrap;">👤 Commandé par</td><td style="padding:5px 0;color:#222;font-size:13px;">' + cart[0].de + ' &lt;' + emailTo + '&gt;</td></tr>'
+      + '</table>'
+      + '</div>'
+      + '<div style="padding:16px 24px;">'
+      + itemsHtml
+      + '</div>'
+      + '<div style="background:#7A2800;padding:16px 24px;text-align:center;">'
+      + '<p style="margin:0;color:#fff;font-size:16px;font-weight:bold;">TOTAL : ' + total + ' € (' + totalQty + ' bon' + (totalQty > 1 ? 's' : '') + ')</p>'
+      + '</div>'
+      + '</div></body></html>';
+
+    var formData = new FormData();
+    formData.append('_subject', '🎁 Demande de Bon Cadeau – Pascale Dussin – ' + dateStr);
+    formData.append('_replyto', emailTo);
+    formData.append('_cc', emailTo);
+    formData.append('_captcha', 'false');
+    formData.append('_html', htmlBody);
 
     fetch('https://formsubmit.co/ajax/8f5597dc5a2d3a0a7d48199f7d5f1984', {
       method: 'POST',
