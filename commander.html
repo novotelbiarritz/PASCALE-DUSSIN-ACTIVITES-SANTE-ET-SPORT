@@ -35,13 +35,11 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:12px;}
 .card{background:rgba(0,0,0,.35);border:2px solid rgba(201,168,76,.3);border-radius:14px;padding:22px 18px 20px;text-align:center;transition:border-color .2s;}
 .card:hover{border-color:var(--gold);}
-.card .c-emoji{font-size:36px;margin-bottom:10px;}
-.card .c-name{font-family:'Cinzel',serif;color:var(--gold);font-size:17px;font-weight:700;letter-spacing:.06em;}
+.card .c-name{font-family:'Cinzel',serif;color:var(--gold);font-size:17px;font-weight:700;letter-spacing:.08em;}
 .card .c-detail{color:#bbb;font-size:13px;margin-top:8px;line-height:1.6;}
 .card .c-price{color:var(--gold2);font-family:'Cinzel',serif;font-size:28px;font-weight:700;margin-top:14px;}
 .card .c-eco{color:#8BC34A;font-size:11px;font-weight:700;margin-top:4px;letter-spacing:.04em;}
 .card .c-sep{height:1px;background:rgba(201,168,76,.2);margin:14px 0;}
-.card .c-sessions{color:#aaa;font-size:12px;line-height:1.5;}
 
 .cta-block{margin:32px 0 20px;text-align:center;}
 .cta-block .cta-label{font-family:'Cinzel',serif;color:var(--gold);font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
@@ -49,7 +47,6 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 
 .btn-call{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:18px 36px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-family:'Cinzel',serif;font-size:18px;letter-spacing:.08em;text-decoration:none;box-shadow:0 4px 20px rgba(122,40,0,.4);transition:opacity .2s;margin:0 8px 12px;}
 .btn-call:hover{opacity:.85;}
-.btn-call .btn-icon{font-size:22px;}
 
 .btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,#1a6b2a,#25a244);color:#fff;font-family:'Lato',serif;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:opacity .2s;margin:0 8px 12px;}
 .btn-wa:hover{opacity:.85;}
@@ -85,66 +82,49 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     <strong>Contactez Pascale directement</strong> pour commander votre bon cadeau — elle s'occupe de tout : paiement et envoi du bon par email.</p>
   </div>
 
+  <!-- COACHING PRIVÉ -->
   <div class="section-label">🧘 Coaching Privé – Sport · Yoga · Pilates</div>
   <div class="cards-grid">
     <div class="card">
-      <div class="c-emoji">✨</div>
-      <div class="c-name">Découverte</div>
-      <div class="c-detail">1 séance de coaching privé personnalisé<br>Sport, Yoga ou Pilates au choix</div>
+      <div class="c-name">LE DÉCLIC</div>
+      <div class="c-detail">1 séance individuelle de 1h</div>
       <div class="c-price">60 €</div>
-      <div class="c-sep"></div>
-      <div class="c-sessions">1 séance · ~1h · Novotel Biarritz Anglet</div>
     </div>
     <div class="card">
-      <div class="c-emoji">🌟</div>
-      <div class="c-name">Évasion</div>
-      <div class="c-detail">3 séances de coaching privé à utiliser librement</div>
-      <div class="c-price">170 €</div>
-      <div class="c-eco">✦ Économisez 10 €</div>
-      <div class="c-sep"></div>
-      <div class="c-sessions">3 séances · ~1h chacune · Novotel Biarritz Anglet</div>
+      <div class="c-name">LE BOOST</div>
+      <div class="c-detail">3 séances individuelles de 1h</div>
+      <div class="c-price">165 €</div>
+      <div class="c-eco">✦ 15 € d'économie</div>
     </div>
     <div class="card">
-      <div class="c-emoji">💎</div>
-      <div class="c-name">Immersion</div>
-      <div class="c-detail">5 séances de coaching privé — le programme complet</div>
-      <div class="c-price">275 €</div>
-      <div class="c-eco">✦ Économisez 25 €</div>
-      <div class="c-sep"></div>
-      <div class="c-sessions">5 séances · ~1h chacune · Novotel Biarritz Anglet</div>
+      <div class="c-name">L'ÉQUILIBRE</div>
+      <div class="c-detail">5 séances individuelles de 1h</div>
+      <div class="c-price">250 €</div>
+      <div class="c-eco">✦ 50 € d'économie</div>
     </div>
   </div>
 
+  <!-- COURS COLLECTIFS -->
   <div class="section-label">🏅 Cours Collectifs – Pilates · Cross Training</div>
   <div class="cards-grid">
     <div class="card">
-      <div class="c-emoji">🌱</div>
-      <div class="c-name">Initiation</div>
-      <div class="c-detail">1 cours collectif pour découvrir l'ambiance de groupe</div>
-      <div class="c-price">20 €</div>
-      <div class="c-sep"></div>
-      <div class="c-sessions">1 cours · ~55 min · Novotel Biarritz Anglet</div>
+      <div class="c-name">LE BOOST</div>
+      <div class="c-detail">5 séances</div>
+      <div class="c-price">70 €</div>
     </div>
     <div class="card">
-      <div class="c-emoji">🔥</div>
-      <div class="c-name">Momentum</div>
-      <div class="c-detail">5 cours collectifs à utiliser à votre rythme</div>
-      <div class="c-price">90 €</div>
-      <div class="c-eco">✦ Économisez 10 €</div>
-      <div class="c-sep"></div>
-      <div class="c-sessions">5 cours · ~55 min chacun · Novotel Biarritz Anglet</div>
+      <div class="c-name">LE CHALLENGE</div>
+      <div class="c-detail">10 séances</div>
+      <div class="c-price">140 €</div>
     </div>
     <div class="card">
-      <div class="c-emoji">🏆</div>
-      <div class="c-name">Engagement</div>
-      <div class="c-detail">10 cours collectifs — le vrai coup de pouce bien-être</div>
-      <div class="c-price">170 €</div>
-      <div class="c-eco">✦ Économisez 30 €</div>
-      <div class="c-sep"></div>
-      <div class="c-sessions">10 cours · ~55 min chacun · Novotel Biarritz Anglet</div>
+      <div class="c-name">LE POWER</div>
+      <div class="c-detail">15 séances</div>
+      <div class="c-price">210 €</div>
     </div>
   </div>
 
+  <!-- COMMENT COMMANDER -->
   <div class="section-label">📋 Comment commander</div>
   <div class="steps">
     <div class="step">
@@ -161,18 +141,15 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
     </div>
   </div>
 
+  <!-- CTA -->
   <div class="cta-block">
     <div class="cta-label">
       Prêt(e) à commander ?
       <span>Contactez Pascale directement — réponse rapide garantie !</span>
     </div>
     <div>
-      <a class="btn-call" href="tel:+33672174995">
-        <span class="btn-icon">📞</span> Appeler Pascale
-      </a>
-      <a class="btn-wa" href="https://wa.me/33672174995?text=Bonjour%20Pascale%2C%20je%20souhaite%20commander%20un%20bon%20cadeau." target="_blank">
-        💬 WhatsApp
-      </a>
+      <a class="btn-call" href="tel:+33672174995">📞 Appeler Pascale</a>
+      <a class="btn-wa" href="https://wa.me/33672174995?text=Bonjour%20Pascale%2C%20je%20souhaite%20commander%20un%20bon%20cadeau." target="_blank">💬 WhatsApp</a>
     </div>
     <div class="cta-hint">Lundi–Vendredi · 9h–19h · Novotel Biarritz Anglet</div>
   </div>
