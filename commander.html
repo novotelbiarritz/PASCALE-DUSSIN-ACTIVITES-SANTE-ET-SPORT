@@ -83,44 +83,48 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
   </div>
 
   <!-- COACHING PRIVÉ -->
-  <div class="section-label">🧘 Coaching Privé – Sport · Yoga · Pilates</div>
-  <div class="cards-grid">
-    <div class="card">
-      <div class="c-name">LE DÉCLIC</div>
-      <div class="c-detail">1 séance individuelle de 1h</div>
-      <div class="c-price">60 €</div>
-    </div>
-    <div class="card">
-      <div class="c-name">LE BOOST</div>
-      <div class="c-detail">3 séances individuelles de 1h</div>
-      <div class="c-price">165 €</div>
-      <div class="c-eco">✦ 15 € d'économie</div>
-    </div>
-    <div class="card">
-      <div class="c-name">L'ÉQUILIBRE</div>
-      <div class="c-detail">5 séances individuelles de 1h</div>
-      <div class="c-price">250 €</div>
-      <div class="c-eco">✦ 50 € d'économie</div>
+  <div id="sec-coaching">
+    <div class="section-label">🧘 Coaching Privé – Sport · Yoga · Pilates</div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="c-name">LE DÉCLIC</div>
+        <div class="c-detail">1 séance individuelle de 1h</div>
+        <div class="c-price">60 €</div>
+      </div>
+      <div class="card">
+        <div class="c-name">LE BOOST</div>
+        <div class="c-detail">3 séances individuelles de 1h</div>
+        <div class="c-price">165 €</div>
+        <div class="c-eco">✦ 15 € d'économie</div>
+      </div>
+      <div class="card">
+        <div class="c-name">L'ÉQUILIBRE</div>
+        <div class="c-detail">5 séances individuelles de 1h</div>
+        <div class="c-price">250 €</div>
+        <div class="c-eco">✦ 50 € d'économie</div>
+      </div>
     </div>
   </div>
 
   <!-- COURS COLLECTIFS -->
-  <div class="section-label">🏅 Cours Collectifs – Pilates · Cross Training</div>
-  <div class="cards-grid">
-    <div class="card">
-      <div class="c-name">LE BOOST</div>
-      <div class="c-detail">5 séances</div>
-      <div class="c-price">70 €</div>
-    </div>
-    <div class="card">
-      <div class="c-name">LE CHALLENGE</div>
-      <div class="c-detail">10 séances</div>
-      <div class="c-price">140 €</div>
-    </div>
-    <div class="card">
-      <div class="c-name">LE POWER</div>
-      <div class="c-detail">15 séances</div>
-      <div class="c-price">210 €</div>
+  <div id="sec-collectif">
+    <div class="section-label">🏅 Cours Collectifs – Pilates · Cross Training</div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="c-name">LE BOOST</div>
+        <div class="c-detail">5 séances</div>
+        <div class="c-price">70 €</div>
+      </div>
+      <div class="card">
+        <div class="c-name">LE CHALLENGE</div>
+        <div class="c-detail">10 séances</div>
+        <div class="c-price">140 €</div>
+      </div>
+      <div class="card">
+        <div class="c-name">LE POWER</div>
+        <div class="c-detail">15 séances</div>
+        <div class="c-price">210 €</div>
+      </div>
     </div>
   </div>
 
@@ -159,6 +163,17 @@ body{background:var(--dark);min-height:100vh;font-family:'Lato',sans-serif;paddi
 <div class="site-footer">
   Pascale Dussin · Coaching &amp; Sport · Novotel Biarritz Anglet
 </div>
+
+<script>
+(function(){
+  var type = new URLSearchParams(window.location.search).get('type');
+  if (type === 'coaching') {
+    document.getElementById('sec-collectif').style.display = 'none';
+  } else if (type === 'collectif') {
+    document.getElementById('sec-coaching').style.display = 'none';
+  }
+})();
+</script>
 
 </body>
 </html>
