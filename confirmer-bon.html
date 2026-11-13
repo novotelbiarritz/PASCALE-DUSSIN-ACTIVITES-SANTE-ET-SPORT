@@ -30,6 +30,16 @@
     margin-top:12px;text-decoration:none;}
   .voucher-link:hover{background:#1a1a2e;}
 
+  .btn-copy{
+    display:block;width:100%;max-width:520px;
+    background:#1a1a2e;border:1px solid var(--gold);
+    color:var(--gold);font-weight:600;font-size:.9rem;
+    padding:12px;border-radius:var(--radius);
+    cursor:pointer;text-align:center;text-decoration:none;
+    letter-spacing:.03em;margin-bottom:16px;}
+  .btn-copy:hover{background:#252545;}
+  .btn-copy.copied{color:var(--green);border-color:var(--green);}
+
   .btn-send{
     display:block;width:100%;max-width:520px;
     background:linear-gradient(135deg,var(--gold),var(--gold2));
@@ -76,10 +86,13 @@
     return;
   }
 
+  /* ── URL sécurisée pour email (l\'apostrophe ' casse les liens dans certains clients mail) ── */
+  var urlEmail = url.replace(/'/g, '%27');
+
   /* ── Mailto body ── */
   var body = 'Bonjour ' + pour + ','
     + '\n\nSuite à votre règlement, je vous adresse votre bon cadeau personnel.'
-    + '\n\nVoici votre lien :\n' + url
+    + '\n\nVoici votre lien :\n' + urlEmail
     + '\n\nPour planifier votre séance, appelez-moi au 06 72 17 49 95.'
     + '\n\nCordialement,'
     + '\nPascale Dussin'
@@ -115,12 +128,38 @@
       + '<a class="voucher-link" href="' + url + '" target="_blank">' + url + '</a>'
     + '</div>'
 
+    + '<button id="btnCopy" class="btn-copy">📋 Copier le lien (pour SMS / WhatsApp)</button>'
+
     + '<a class="btn-send" href="' + mailto + '">📧 Envoyer le bon à ' + to + '</a>'
 
     + '<a class="btn-preview" href="' + url + '" target="_blank">👁 Prévisualiser le bon cadeau</a>'
 
-    + '<p class="notice">Ce bouton ouvre votre application email avec le message pré-rédigé.<br>'
-      + 'Vérifiez et cliquez <strong>Envoyer</strong> dans votre messagerie.</p>';
+    + '<p class="notice">Le bouton email ouvre votre messagerie avec le message pré-rédigé.<br>'
+      + 'Si le lien ne passe pas par email, copiez-le et envoyez-le par SMS ou WhatsApp.</p>';
+
+  /* ── Bouton copier ── */
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var btn = this;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(urlEmail).then(function(){
+        btn.textContent = '✅ Lien copié !';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = '📋 Copier le lien (pour SMS / WhatsApp)'; btn.classList.remove('copied'); }, 2500);
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = urlEmail;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = '✅ Lien copié !';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = '📋 Copier le lien (pour SMS / WhatsApp)'; btn.classList.remove('copied'); }, 2500);
+    }
+  });
 })();
 </script>
 </body>
